@@ -460,7 +460,7 @@
 				INFOPLIST_FILE = DelaunayTriangulationSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zero.DelaunayTriangulationSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zero.DelaunaySwift;
 				PRODUCT_NAME = DelaunaySwift;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -479,7 +479,7 @@
 				INFOPLIST_FILE = DelaunayTriangulationSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zero.DelaunayTriangulationSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zero.DelaunaySwift;
 				PRODUCT_NAME = DelaunaySwift;
 				SKIP_INSTALL = YES;
 			};
