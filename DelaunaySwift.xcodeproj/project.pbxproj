@@ -22,6 +22,7 @@
 		C41B5BF61C3FFDF8006B601E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C41B5BF41C3FFDF8006B601E /* LaunchScreen.storyboard */; };
 		C41B5C011C4001A2006B601E /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BFD1C3FFF1E006B601E /* TriangleView.swift */; };
 		C41B5C021C4001A2006B601E /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BFF1C3FFF49006B601E /* Utilities.swift */; };
+		C45BF3591C4535C100DE404D /* DelaunaySwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C41B5BC11C3FF148006B601E /* DelaunaySwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C4C89ABD1C410B0D0022F237 /* DelaunaySwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C41B5BC11C3FF148006B601E /* DelaunaySwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +34,28 @@
 			remoteGlobalIDString = C41B5BC01C3FF148006B601E;
 			remoteInfo = DelaunayTriangulationSwift;
 		};
+		C45BF35A1C4535C100DE404D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C41B5BB81C3FF148006B601E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C41B5BC01C3FF148006B601E;
+			remoteInfo = DelaunaySwift;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C45BF35C1C4535C100DE404D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C45BF3591C4535C100DE404D /* DelaunaySwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C41B5BC11C3FF148006B601E /* DelaunaySwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DelaunaySwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,10 +241,12 @@
 				C41B5BE51C3FFDF8006B601E /* Sources */,
 				C41B5BE61C3FFDF8006B601E /* Frameworks */,
 				C41B5BE71C3FFDF8006B601E /* Resources */,
+				C45BF35C1C4535C100DE404D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C45BF35B1C4535C100DE404D /* PBXTargetDependency */,
 			);
 			name = Triangulation;
 			productName = Triangulation;
@@ -336,6 +360,11 @@
 			isa = PBXTargetDependency;
 			target = C41B5BC01C3FF148006B601E /* DelaunaySwift */;
 			targetProxy = C41B5BCD1C3FF148006B601E /* PBXContainerItemProxy */;
+		};
+		C45BF35B1C4535C100DE404D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C41B5BC01C3FF148006B601E /* DelaunaySwift */;
+			targetProxy = C45BF35A1C4535C100DE404D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
