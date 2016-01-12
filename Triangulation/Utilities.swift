@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import DelaunayTriangulationSwift
+import DelaunaySwift
 
 extension Triangle {
     func toPath() -> CGPath {

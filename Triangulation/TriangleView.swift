@@ -8,7 +8,7 @@
 
 import UIKit
 import GameplayKit
-import DelaunayTriangulationSwift
+import DelaunaySwift
 
 /// Generate set of vertices for our triangulation to use
 func generateVertices(size: CGSize, cellSize: CGFloat, variance: CGFloat = 0.75, seed: UInt64 = numericCast(arc4random())) -> [Vertice] {
@@ -57,14 +57,14 @@ class TriangleView: UIView {
     }
     
     func commonInit() {
-        let tap = UITapGestureRecognizer(target: self, action: "tapped")
-        addGestureRecognizer(tap)
+        let tapGesture = UITapGestureRecognizer(target: self, action: "tapped")
+        addGestureRecognizer(tapGesture)
     }
     
     func tapped() {
-        if let s = layer.sublayers {
-            for i in s {
-                i.removeFromSuperlayer()
+        if let sublayers = layer.sublayers {
+            for sublayer in sublayers {
+                sublayer.removeFromSuperlayer()
             }
         }
         setNeedsLayout()
@@ -77,12 +77,12 @@ class TriangleView: UIView {
         let vertices = generateVertices(bounds.size, cellSize: 60)
         let triangles = Delaunay().triangulate(vertices)
         
-        for t in triangles {
-            let sub = CAShapeLayer()
-            sub.path = t.toPath()
-            sub.fillColor = UIColor().randomColor().CGColor
-            sub.backgroundColor = UIColor.clearColor().CGColor
-            layer.addSublayer(sub)
+        for triangle in triangles {
+            let triangleLayer = CAShapeLayer()
+            triangleLayer.path = triangle.toPath()
+            triangleLayer.fillColor = UIColor().randomColor().CGColor
+            triangleLayer.backgroundColor = UIColor.clearColor().CGColor
+            layer.addSublayer(triangleLayer)
         }
     }
 }
