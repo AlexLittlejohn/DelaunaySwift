@@ -205,17 +205,17 @@ public class Delaunay {
         * building a list of triplets that represent triangles. */
         completed += open
         
-        var results = [Triangle]()
-        
-        for circum in completed {
-            if circum.i < n && circum.j < n && circum.k < n {
-                let vertice1 = _vertices[circum.i]
-                let vertice2 = _vertices[circum.j]
-                let vertice3 = _vertices[circum.k]
-                let triangle = Triangle(vertice1: vertice1, vertice2: vertice2, vertice3: vertice3)
-                
-                results.append(triangle)
+        let results = completed.flatMap { (circumCircle) -> Triangle? in
+            
+            guard circumCircle.i < n && circumCircle.j < n && circumCircle.k < n else {
+                return nil
             }
+            
+            let vertice1 = _vertices[circumCircle.i]
+            let vertice2 = _vertices[circumCircle.j]
+            let vertice3 = _vertices[circumCircle.k]
+            let triangle = Triangle(vertice1: vertice1, vertice2: vertice2, vertice3: vertice3)
+            return triangle
         }
         
         /* Yay, we're done! */
