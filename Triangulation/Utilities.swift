@@ -13,9 +13,9 @@ extension Triangle {
     func toPath() -> CGPath {
         
         let path = CGPathCreateMutable()
-        let point1 = vertice1.pointValue()
-        let point2 = vertice2.pointValue()
-        let point3 = vertice3.pointValue()
+        let point1 = vertex1.pointValue()
+        let point2 = vertex2.pointValue()
+        let point3 = vertex3.pointValue()
         
         CGPathMoveToPoint(path, nil, point1.x, point1.y)
         CGPathAddLineToPoint(path, nil, point2.x, point2.y)
@@ -27,9 +27,9 @@ extension Triangle {
     }
 }
 
-extension Vertice {
+extension Vertex {
     func pointValue() -> CGPoint {
-        return CGPoint(x: Double(x), y: Double(y))
+        return CGPoint(x: x, y: y)
     }
 }
 

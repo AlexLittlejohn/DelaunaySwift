@@ -13,7 +13,7 @@ public class Delaunay {
     public init() { }
     
     /* Generates a supertraingle containing all other triangles */
-    private func supertriangle(vertices: [Vertice]) -> [Vertice] {
+    private func supertriangle(vertices: [Vertex]) -> [Vertex] {
         var xmin = Double(Int32.max)
         var ymin = Double(Int32.max)
         var xmax = -Double(Int32.max)
@@ -33,14 +33,14 @@ public class Delaunay {
         let ymid = ymin + dy * 0.5
         
         return [
-            Vertice(x: xmid - 20 * dmax, y: ymid - dmax),
-            Vertice(x: xmid, y: ymid + 20 * dmax),
-            Vertice(x: xmid + 20 * dmax, y: ymid - dmax)
+            Vertex(x: xmid - 20 * dmax, y: ymid - dmax),
+            Vertex(x: xmid, y: ymid + 20 * dmax),
+            Vertex(x: xmid + 20 * dmax, y: ymid - dmax)
         ]
     }
     
     /* Calculate a circumcircle for a set of 3 vertices */
-    private func circumcircle(vertices: [Vertice], i: Int, j: Int, k: Int) throws -> CircumCircle {
+    private func circumcircle(vertices: [Vertex], i: Int, j: Int, k: Int) -> CircumCircle {
         let x1 = vertices[i].x
         let y1 = vertices[i].y
         let x2 = vertices[j].x
@@ -52,10 +52,6 @@ public class Delaunay {
         
         let fabsy1y2 = abs(y1 - y2)
         let fabsy2y3 = abs(y2 - y3)
-        
-        if fabsy1y2 < DBL_EPSILON && fabsy2y3 < DBL_EPSILON {
-            throw DelaunayError.CoincidentPoints
-        }
         
         if fabsy1y2 < DBL_EPSILON {
             let m2 = -((x3 - x2) / (y3 - y2))
@@ -99,15 +95,17 @@ public class Delaunay {
         
         var j = e.count
         while j > 0 {
-            --j
+            j -= 1
             b = j < e.count ? e[j] : -1
-            --j
+            j -= 1
             a = j < e.count ? e[j] : -1
             
             var i = j
             while i > 0 {
-                n = e[--i]
-                m = e[--i]
+                i -= 1
+                n = e[i]
+                i -= 1
+                m = e[i]
                 
                 if (a == m && b == n) || (a == n && b == m) {
                     
@@ -121,28 +119,22 @@ public class Delaunay {
         return e
     }
     
-    public func triangulate(vertices: [Vertice]) -> [Triangle] {
+    public func triangulate(vertices: [Vertex]) -> [Triangle] {
         
-        let n = vertices.count
-        var indices = [Int](count: n, repeatedValue: 0)
+        var _vertices = vertices.removeDuplicates()
+        
+        guard _vertices.count >= 3 else {
+            return [Triangle]()
+        }
+
+        let n = _vertices.count
         var open = [CircumCircle]()
         var completed = [CircumCircle]()
         var edges = [Int]()
-        var _vertices = vertices
-        
-        if n < 3 {
-            return [Triangle]()
-        }
         
         /* Make an array of indices into the vertex array, sorted by the
         * vertices' x-position. */
-        for i in 0..<n {
-            indices[i] = i
-        }
-        
-        indices.sortInPlace { (i, j) -> Bool in
-            return _vertices[j].x > _vertices[i].x
-        }
+        var indices = [Int](0..<n).sort {  _vertices[$0].x < _vertices[$1].x }
         
         /* Next, find the vertices of the supertriangle (which contains all other
         * triangles), and append them onto the end of a (copy of) the vertex
@@ -152,7 +144,7 @@ public class Delaunay {
         /* Initialize the open list (containing the supertriangle and nothing
         * else) and the closed list (which is empty since we havn't processed
         * any triangles yet). */
-        open.append(try! circumcircle(_vertices, i: n + 0, j: n + 1, k: n + 2))
+        open.append(circumcircle(_vertices, i: n + 0, j: n + 1, k: n + 2))
         
         /* Incrementally add each vertex to the mesh. */
         for i in (0..<n).reverse() {
@@ -194,9 +186,12 @@ public class Delaunay {
             /* Add a new triangle for each edge. */
             var j = edges.count
             while j > 0 {
-                let b = edges[--j]
-                let a = edges[--j]
-                open.append(try! circumcircle(_vertices, i: a, j: b, k: c))
+                
+                j -= 1
+                let b = edges[j]
+                j -= 1
+                let a = edges[j]
+                open.append(circumcircle(_vertices, i: a, j: b, k: c))
             }
         }
         
@@ -211,10 +206,10 @@ public class Delaunay {
                 return nil
             }
             
-            let vertice1 = _vertices[circumCircle.i]
-            let vertice2 = _vertices[circumCircle.j]
-            let vertice3 = _vertices[circumCircle.k]
-            let triangle = Triangle(vertice1: vertice1, vertice2: vertice2, vertice3: vertice3)
+            let vertex1 = _vertices[circumCircle.i]
+            let vertex2 = _vertices[circumCircle.j]
+            let vertex3 = _vertices[circumCircle.k]
+            let triangle = Triangle(vertex1: vertex1, vertex2: vertex2, vertex3: vertex3)
             return triangle
         }
         

@@ -13,7 +13,7 @@
 		C41B5BDC1C3FF667006B601E /* DelaunaySwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BDB1C3FF667006B601E /* DelaunaySwift.swift */; };
 		C41B5BDE1C3FF6A5006B601E /* DelaunayError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BDD1C3FF6A5006B601E /* DelaunayError.swift */; };
 		C41B5BE01C3FF703006B601E /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BDF1C3FF703006B601E /* Triangle.swift */; };
-		C41B5BE21C3FF72E006B601E /* Vertice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BE11C3FF72E006B601E /* Vertice.swift */; };
+		C41B5BE21C3FF72E006B601E /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BE11C3FF72E006B601E /* Vertex.swift */; };
 		C41B5BE41C3FF751006B601E /* CircumCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BE31C3FF751006B601E /* CircumCircle.swift */; };
 		C41B5BEC1C3FFDF8006B601E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BEB1C3FFDF8006B601E /* AppDelegate.swift */; };
 		C41B5BEE1C3FFDF8006B601E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BED1C3FFDF8006B601E /* ViewController.swift */; };
@@ -67,7 +67,7 @@
 		C41B5BDB1C3FF667006B601E /* DelaunaySwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelaunaySwift.swift; sourceTree = "<group>"; };
 		C41B5BDD1C3FF6A5006B601E /* DelaunayError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelaunayError.swift; sourceTree = "<group>"; };
 		C41B5BDF1C3FF703006B601E /* Triangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
-		C41B5BE11C3FF72E006B601E /* Vertice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vertice.swift; sourceTree = "<group>"; };
+		C41B5BE11C3FF72E006B601E /* Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
 		C41B5BE31C3FF751006B601E /* CircumCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircumCircle.swift; sourceTree = "<group>"; };
 		C41B5BE91C3FFDF8006B601E /* Triangulation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Triangulation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C41B5BEB1C3FFDF8006B601E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,7 +133,7 @@
 				C41B5BDB1C3FF667006B601E /* DelaunaySwift.swift */,
 				C41B5BDD1C3FF6A5006B601E /* DelaunayError.swift */,
 				C41B5BDF1C3FF703006B601E /* Triangle.swift */,
-				C41B5BE11C3FF72E006B601E /* Vertice.swift */,
+				C41B5BE11C3FF72E006B601E /* Vertex.swift */,
 				C41B5BE31C3FF751006B601E /* CircumCircle.swift */,
 				C41B5BFB1C3FFE29006B601E /* Supporting Files */,
 			);
@@ -328,7 +328,7 @@
 			files = (
 				C41B5BE01C3FF703006B601E /* Triangle.swift in Sources */,
 				C41B5BDC1C3FF667006B601E /* DelaunaySwift.swift in Sources */,
-				C41B5BE21C3FF72E006B601E /* Vertice.swift in Sources */,
+				C41B5BE21C3FF72E006B601E /* Vertex.swift in Sources */,
 				C41B5BDE1C3FF6A5006B601E /* DelaunayError.swift in Sources */,
 				C41B5BE41C3FF751006B601E /* CircumCircle.swift in Sources */,
 			);
