@@ -9,13 +9,13 @@
 /// A simple struct representing 3 vertices
 public struct Triangle {
     
-    public init(vertice1: Vertice, vertice2: Vertice, vertice3: Vertice) {
-        self.vertice1 = vertice1
-        self.vertice2 = vertice2
-        self.vertice3 = vertice3
+    public init(vertex1: Vertex, vertex2: Vertex, vertex3: Vertex) {
+        self.vertex1 = vertex1
+        self.vertex2 = vertex2
+        self.vertex3 = vertex3
     }
     
-    public let vertice1: Vertice
-    public let vertice2: Vertice
-    public let vertice3: Vertice
+    public let vertex1: Vertex
+    public let vertex2: Vertex
+    public let vertex3: Vertex
 }
