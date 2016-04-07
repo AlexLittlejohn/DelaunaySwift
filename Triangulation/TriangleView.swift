@@ -11,7 +11,7 @@ import GameplayKit
 import DelaunaySwift
 
 /// Generate set of vertices for our triangulation to use
-func generateVertices(size: CGSize, cellSize: CGFloat, variance: CGFloat = 0.75, seed: UInt64 = numericCast(arc4random())) -> [Vertice] {
+func generateVertices(size: CGSize, cellSize: CGFloat, variance: CGFloat = 0.75, seed: UInt64 = numericCast(arc4random())) -> [Vertex] {
     
     // How many cells we're going to have on each axis (pad by 2 cells on each edge)
     let cellsX = (size.width + 4 * cellSize) / cellSize
@@ -23,7 +23,7 @@ func generateVertices(size: CGSize, cellSize: CGFloat, variance: CGFloat = 0.75,
     
     let _variance = cellSize * variance / 4
     
-    var points = [Vertice]()
+    var points = [Vertex]()
     let minX = -bleedX
     let maxX = size.width + bleedX
     let minY = -bleedY
@@ -37,7 +37,7 @@ func generateVertices(size: CGSize, cellSize: CGFloat, variance: CGFloat = 0.75,
             let x = i + cellSize/2 + CGFloat(generator.nextUniform()) + CGFloat.random(-_variance, _variance)
             let y = j + cellSize/2 + CGFloat(generator.nextUniform()) + CGFloat.random(-_variance, _variance)
             
-            points.append(Vertice(x: Double(x), y: Double(y)))
+            points.append(Vertex(x: Double(x), y: Double(y)))
         }
     }
     
@@ -57,7 +57,7 @@ class TriangleView: UIView {
     }
     
     func commonInit() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: "tapped")
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(TriangleView.tapped))
         addGestureRecognizer(tapGesture)
     }
     
