@@ -8,9 +8,9 @@
 
 /// Represents a bounding circle for a set of 3 vertices
 internal struct CircumCircle {
-    var i: Int
-    var j: Int
-    var k: Int
+    var vertex1: Vertex
+    var vertex2: Vertex
+    var vertex3: Vertex
     var x: Double
     var y: Double
     var rsqr: Double

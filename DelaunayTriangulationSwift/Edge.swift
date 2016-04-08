@@ -16,10 +16,11 @@ struct Edge {
 extension Edge: Equatable {}
 
 func ==(lhs: Edge, rhs: Edge) -> Bool {
-    
-    guard lhs.vertex1 == rhs.vertex1 && lhs.vertex2 == rhs.vertex2 || lhs.vertex1 == rhs.vertex2 && lhs.vertex2 == rhs.vertex1 else {
-        return false
-    }
+    return lhs.vertex1 == rhs.vertex1 && lhs.vertex2 == rhs.vertex2 || lhs.vertex1 == rhs.vertex2 && lhs.vertex2 == rhs.vertex1
+}
 
-    return true
+extension Edge: Hashable {
+    var hashValue: Int {
+        return "\(vertex1.x)\(vertex1.y)\(vertex2.x)\(vertex2.y)".hashValue
+    }
 }
