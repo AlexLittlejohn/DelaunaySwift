@@ -8,12 +8,12 @@
 
 import Darwin
 
-public class Delaunay {
+open class Delaunay {
     
     public init() { }
     
     /* Generates a supertraingle containing all other triangles */
-    private func supertriangle(vertices: [Vertex]) -> [Vertex] {
+    fileprivate func supertriangle(_ vertices: [Vertex]) -> [Vertex] {
         var xmin = Double(Int32.max)
         var ymin = Double(Int32.max)
         var xmax = -Double(Int32.max)
@@ -40,7 +40,7 @@ public class Delaunay {
     }
     
     /* Calculate a circumcircle for a set of 3 vertices */
-    private func circumcircle(i: Vertex, j: Vertex, k: Vertex) -> CircumCircle {
+    fileprivate func circumcircle(_ i: Vertex, j: Vertex, k: Vertex) -> Circumcircle {
         let x1 = i.x
         let y1 = i.y
         let x2 = j.x
@@ -85,10 +85,10 @@ public class Delaunay {
         let dy = y2 - yc
         let rsqr = dx * dx + dy * dy
         
-        return CircumCircle(vertex1: i, vertex2: j, vertex3: k, x: xc, y: yc, rsqr: rsqr)
+        return Circumcircle(vertex1: i, vertex2: j, vertex3: k, x: xc, y: yc, rsqr: rsqr)
     }
     
-    private func dedup(edges: [Vertex]) -> [Vertex] {
+    fileprivate func dedup(_ edges: [Vertex]) -> [Vertex] {
         
         var e = edges
         var a: Vertex?, b: Vertex?, m: Vertex?, n: Vertex?
@@ -108,9 +108,8 @@ public class Delaunay {
                 m = e[i]
                 
                 if (a == m && b == n) || (a == n && b == m) {
-                    
-                    e.removeRange(j...j + 1)
-                    e.removeRange(i...i + 1)
+                    e.removeSubrange(j...j + 1)
+                    e.removeSubrange(i...i + 1)
                     break
                 }
             }
@@ -118,9 +117,8 @@ public class Delaunay {
         
         return e
     }
-
     
-    public func triangulate(vertices: [Vertex]) -> [Triangle] {
+    open func triangulate(_ vertices: [Vertex]) -> [Triangle] {
         
         var _vertices = vertices.removeDuplicates()
         
@@ -129,13 +127,13 @@ public class Delaunay {
         }
 
         let n = _vertices.count
-        var open = [CircumCircle]()
-        var completed = [CircumCircle]()
+        var open = [Circumcircle]()
+        var completed = [Circumcircle]()
         var edges = [Vertex]()
         
         /* Make an array of indices into the vertex array, sorted by the
         * vertices' x-position. */
-        var indices = [Int](0..<n).sort {  _vertices[$0].x < _vertices[$1].x }
+        var indices = [Int](0..<n).sorted {  _vertices[$0].x < _vertices[$1].x }
         
         /* Next, find the vertices of the supertriangle (which contains all other
         * triangles) */
@@ -156,7 +154,7 @@ public class Delaunay {
             /* For each open triangle, check to see if the current point is
             * inside it's circumcircle. If it is, remove the triangle and add
             * it's edges to an edge list. */
-            for j in (0..<open.count).reverse() {
+            for j in (0..<open.count).reversed() {
                 
                 /* If this point is to the right of this triangle's circumcircle,
                 * then this triangle should never get checked again. Remove it
@@ -164,7 +162,7 @@ public class Delaunay {
                 let dx = _vertices[c].x - open[j].x
                 
                 if dx > 0 && dx * dx > open[j].rsqr {
-                    completed.append(open.removeAtIndex(j))
+                    completed.append(open.remove(at: j))
                     continue
                 }
                 
@@ -182,7 +180,13 @@ public class Delaunay {
                     open[j].vertex3, open[j].vertex1
                 ]
                 
-                open.removeAtIndex(j)
+//                edges += [
+//                    Edge(vertex1: open[j].vertex1, vertex2: open[j].vertex2),
+//                    Edge(vertex1: open[j].vertex2, vertex2: open[j].vertex3),
+//                    Edge(vertex1: open[j].vertex3, vertex2: open[j].vertex1)
+//                ]
+                
+                open.remove(at: j)
             }
             
             /* Remove any doubled edges. */
@@ -210,7 +214,7 @@ public class Delaunay {
         let results = completed.flatMap { (circumCircle) -> Triangle? in
             
             let current: Set<Vertex> = [circumCircle.vertex1, circumCircle.vertex2, circumCircle.vertex3]
-            let intersection = ignored.intersect(current)
+            let intersection = ignored.intersection(current)
             if intersection.count > 0 {
                 return nil
             }

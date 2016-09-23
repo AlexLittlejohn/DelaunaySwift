@@ -7,11 +7,11 @@
 //
 
 /// Represents a bounding circle for a set of 3 vertices
-internal struct CircumCircle {
-    var vertex1: Vertex
-    var vertex2: Vertex
-    var vertex3: Vertex
-    var x: Double
-    var y: Double
-    var rsqr: Double
+internal struct Circumcircle {
+    let vertex1: Vertex
+    let vertex2: Vertex
+    let vertex3: Vertex
+    let x: Double
+    let y: Double
+    let rsqr: Double
 }

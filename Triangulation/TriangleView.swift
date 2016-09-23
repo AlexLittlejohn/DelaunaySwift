@@ -11,7 +11,7 @@ import GameplayKit
 import DelaunaySwift
 
 /// Generate set of vertices for our triangulation to use
-func generateVertices(size: CGSize, cellSize: CGFloat, variance: CGFloat = 0.75, seed: UInt64 = numericCast(arc4random())) -> [Vertex] {
+func generateVertices(_ size: CGSize, cellSize: CGFloat, variance: CGFloat = 0.75, seed: UInt64 = numericCast(arc4random())) -> [Vertex] {
     
     // How many cells we're going to have on each axis (pad by 2 cells on each edge)
     let cellsX = (size.width + 4 * cellSize) / cellSize
@@ -31,8 +31,8 @@ func generateVertices(size: CGSize, cellSize: CGFloat, variance: CGFloat = 0.75,
     
     let generator = GKLinearCongruentialRandomSource(seed: seed)
     
-    for i in minX.stride(to: maxX, by: cellSize) {
-        for j in minY.stride(to: maxY, by: cellSize) {
+    for i in stride(from: minX, to: maxX, by: cellSize) {
+        for j in stride(from: minY, to: maxY, by: cellSize) {
             
             let x = i + cellSize/2 + CGFloat(generator.nextUniform()) + CGFloat.random(-_variance, _variance)
             let y = j + cellSize/2 + CGFloat(generator.nextUniform()) + CGFloat.random(-_variance, _variance)
@@ -80,8 +80,8 @@ class TriangleView: UIView {
         for triangle in triangles {
             let triangleLayer = CAShapeLayer()
             triangleLayer.path = triangle.toPath()
-            triangleLayer.fillColor = UIColor().randomColor().CGColor
-            triangleLayer.backgroundColor = UIColor.clearColor().CGColor
+            triangleLayer.fillColor = UIColor().randomColor().cgColor
+            triangleLayer.backgroundColor = UIColor.clear.cgColor
             layer.addSublayer(triangleLayer)
         }
     }
