@@ -12,16 +12,17 @@ import DelaunaySwift
 extension Triangle {
     func toPath() -> CGPath {
         
-        let path = CGPathCreateMutable()
+        let path = CGMutablePath()
         let point1 = vertex1.pointValue()
         let point2 = vertex2.pointValue()
         let point3 = vertex3.pointValue()
         
-        CGPathMoveToPoint(path, nil, point1.x, point1.y)
-        CGPathAddLineToPoint(path, nil, point2.x, point2.y)
-        CGPathAddLineToPoint(path, nil, point3.x, point3.y)
-        CGPathAddLineToPoint(path, nil, point1.x, point1.y)
-        CGPathCloseSubpath(path)
+        path.move(to: point1)
+        path.addLine(to: point2)
+        path.addLine(to: point3)
+        path.addLine(to: point1)
+
+        path.closeSubpath()
         
         return path
     }
@@ -38,13 +39,13 @@ extension Double {
         return Double(arc4random()) / 0xFFFFffff
     }
     
-    static func random(min: Double, _ max: Double) -> Double {
+    static func random(_ min: Double, _ max: Double) -> Double {
         return Double.random() * (max - min) + min
     }
 }
 
 extension CGFloat {
-    static func random(min: CGFloat, _ max: CGFloat) -> CGFloat {
+    static func random(_ min: CGFloat, _ max: CGFloat) -> CGFloat {
         return CGFloat(Double.random(Double(min), Double(max)))
     }
 }
