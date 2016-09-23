@@ -36,3 +36,9 @@ extension Array where Element:Equatable {
         return result
     }
 }
+
+extension Vertex: Hashable {
+    public var hashValue: Int {
+        return "\(x)\(y)".hashValue
+    }
+}
