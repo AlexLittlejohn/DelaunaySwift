@@ -1,7 +1,7 @@
 # DelaunayTriangulationSwift
 Delaunay Triangulation implementation written in swift [https://en.wikipedia.org/wiki/Delaunay_triangulation](https://en.wikipedia.org/wiki/Delaunay_triangulation)
 
---
+---
 
 ### Usage
 

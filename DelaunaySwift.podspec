@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   spec.name               = "DelaunaySwift"
-  spec.version            = "0.1.1"
-  spec.summary            = "A utility for doing Delaunay triangulations on a set of vertexes."
+  spec.version            = "0.1.2"
+  spec.summary            = "A utility for doing Delaunay triangulations on a set of vertices."
   spec.source             = { :git => "https://github.com/AlexLittlejohn/DelaunaySwift.git", :tag => spec.version.to_s }
   spec.requires_arc       = true
   spec.platform           = :ios, "10.0"
