@@ -74,9 +74,15 @@ class TriangleView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let vertices = generateVertices(bounds.size, cellSize: 60)
+        let vertices = generateVertices(bounds.size, cellSize: 80)
+
+        let start = Date().timeIntervalSince1970
+
         let triangles = Delaunay().triangulate(vertices)
-        
+
+        let end = Date().timeIntervalSince1970
+        print("time: \(end - start)")
+
         for triangle in triangles {
             let triangleLayer = CAShapeLayer()
             triangleLayer.path = triangle.toPath()
