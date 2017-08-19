@@ -6,7 +6,6 @@
 //  Copyright © 2016 zero. All rights reserved.
 //
 
-import UIKit
 
 struct Edge {
     let vertex1: Vertex
@@ -21,6 +20,6 @@ func ==(lhs: Edge, rhs: Edge) -> Bool {
 
 extension Edge: Hashable {
     var hashValue: Int {
-        return "\(vertex1.x)\(vertex1.y)\(vertex2.x)\(vertex2.y)".hashValue
+        return Int((vertex1.x+vertex1.y+vertex2.x+vertex2.y)*1000000.0)
     }
 }
