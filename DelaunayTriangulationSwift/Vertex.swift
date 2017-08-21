@@ -23,10 +23,10 @@ public struct Vertex {
     public let y: Double
 }
 
-extension Vertex: Equatable { }
-
-public func ==(lhs: Vertex, rhs: Vertex) -> Bool {
-    return lhs.x == rhs.x && lhs.y == rhs.y
+extension Vertex: Equatable { 
+    static public func ==(lhs: Vertex, rhs: Vertex) -> Bool {
+        return lhs.x == rhs.x && lhs.y == rhs.y
+    }
 }
 
 extension Array where Element:Equatable {
@@ -45,6 +45,9 @@ extension Array where Element:Equatable {
 
 extension Vertex: Hashable {
     public var hashValue: Int {
-        return Int((x+y)*10000000)
+        var seed = UInt(0)
+        hash_combine(seed: &seed, value: UInt(bitPattern: x.hashValue))
+        hash_combine(seed: &seed, value: UInt(bitPattern: y.hashValue))
+        return Int(bitPattern: seed)
     }
 }

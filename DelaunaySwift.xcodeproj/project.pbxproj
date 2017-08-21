@@ -31,6 +31,8 @@
 		D2A991211F4863B600851EE9 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BE11C3FF72E006B601E /* Vertex.swift */; };
 		D2A991221F4863B600851EE9 /* CircumCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BE31C3FF751006B601E /* CircumCircle.swift */; };
 		D2A991251F4863B600851EE9 /* DelaunaySwift.h in Headers */ = {isa = PBXBuildFile; fileRef = C41B5BC41C3FF148006B601E /* DelaunaySwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D2F918BC1F4AD19E0036548C /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F918BB1F4AD19E0036548C /* Hash.swift */; };
+		D2F918BD1F4AD19E0036548C /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F918BB1F4AD19E0036548C /* Hash.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,7 @@
 		C4E432AA1CB68629006E3BC0 /* EquatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquatableTests.swift; sourceTree = "<group>"; };
 		D2A9912A1F4863B600851EE9 /* DelaunaySwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DelaunaySwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A991371F4865B000851EE9 /* DelaunaySwift_MacOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DelaunaySwift_MacOS-Info.plist"; sourceTree = "<group>"; };
+		D2F918BB1F4AD19E0036548C /* Hash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +155,7 @@
 				C41B5BDF1C3FF703006B601E /* Triangle.swift */,
 				C41B5BE11C3FF72E006B601E /* Vertex.swift */,
 				C4E432A81CB684DD006E3BC0 /* Edge.swift */,
+				D2F918BB1F4AD19E0036548C /* Hash.swift */,
 				C41B5BE31C3FF751006B601E /* CircumCircle.swift */,
 				C41B5BFB1C3FFE29006B601E /* Supporting Files */,
 			);
@@ -385,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C41B5BE01C3FF703006B601E /* Triangle.swift in Sources */,
+				D2F918BC1F4AD19E0036548C /* Hash.swift in Sources */,
 				C41B5BDC1C3FF667006B601E /* DelaunaySwift.swift in Sources */,
 				C4E432A91CB684DD006E3BC0 /* Edge.swift in Sources */,
 				C41B5BE21C3FF72E006B601E /* Vertex.swift in Sources */,
@@ -417,6 +422,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2A9911E1F4863B600851EE9 /* Triangle.swift in Sources */,
+				D2F918BD1F4AD19E0036548C /* Hash.swift in Sources */,
 				D2A9911F1F4863B600851EE9 /* DelaunaySwift.swift in Sources */,
 				D2A991201F4863B600851EE9 /* Edge.swift in Sources */,
 				D2A991211F4863B600851EE9 /* Vertex.swift in Sources */,
