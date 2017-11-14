@@ -25,6 +25,12 @@
 		C4C89ABD1C410B0D0022F237 /* DelaunaySwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C41B5BC11C3FF148006B601E /* DelaunaySwift.framework */; };
 		C4E432A91CB684DD006E3BC0 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E432A81CB684DD006E3BC0 /* Edge.swift */; };
 		C4E432AB1CB68629006E3BC0 /* EquatableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E432AA1CB68629006E3BC0 /* EquatableTests.swift */; };
+		D204F7801FBA64480087FB56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204F77F1FBA64480087FB56 /* AppDelegate.swift */; };
+		D204F7821FBA64480087FB56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204F7811FBA64480087FB56 /* ViewController.swift */; };
+		D204F7841FBA64480087FB56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D204F7831FBA64480087FB56 /* Assets.xcassets */; };
+		D204F7871FBA64480087FB56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D204F7851FBA64480087FB56 /* Main.storyboard */; };
+		D204F7901FBA64EC0087FB56 /* DelaunaySwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2A9912A1F4863B600851EE9 /* DelaunaySwift.framework */; };
+		D204F7911FBA651A0087FB56 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BFF1C3FFF49006B601E /* Utilities.swift */; };
 		D2A9911E1F4863B600851EE9 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BDF1C3FF703006B601E /* Triangle.swift */; };
 		D2A9911F1F4863B600851EE9 /* DelaunaySwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BDB1C3FF667006B601E /* DelaunaySwift.swift */; };
 		D2A991201F4863B600851EE9 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E432A81CB684DD006E3BC0 /* Edge.swift */; };
@@ -49,6 +55,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = C41B5BC01C3FF148006B601E;
 			remoteInfo = DelaunaySwift;
+		};
+		D204F78D1FBA64E70087FB56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C41B5BB81C3FF148006B601E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2A9911C1F4863B600851EE9;
+			remoteInfo = "DelaunaySwift (MacOS)";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -88,6 +101,13 @@
 		C41B5BFF1C3FFF49006B601E /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C4E432A81CB684DD006E3BC0 /* Edge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
 		C4E432AA1CB68629006E3BC0 /* EquatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquatableTests.swift; sourceTree = "<group>"; };
+		D204F77D1FBA64480087FB56 /* TriangulationTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TriangulationTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D204F77F1FBA64480087FB56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D204F7811FBA64480087FB56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D204F7831FBA64480087FB56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D204F7861FBA64480087FB56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D204F7881FBA64480087FB56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D204F7891FBA64480087FB56 /* TriangulationTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TriangulationTest.entitlements; sourceTree = "<group>"; };
 		D2A9912A1F4863B600851EE9 /* DelaunaySwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DelaunaySwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A991371F4865B000851EE9 /* DelaunaySwift_MacOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DelaunaySwift_MacOS-Info.plist"; sourceTree = "<group>"; };
 		D2F918BB1F4AD19E0036548C /* Hash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
@@ -117,6 +137,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D204F77A1FBA64480087FB56 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D204F7901FBA64EC0087FB56 /* DelaunaySwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2A991231F4863B600851EE9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -133,7 +161,9 @@
 				C41B5BEA1C3FFDF8006B601E /* TriangulationExample */,
 				C41B5BC31C3FF148006B601E /* DelaunaySwift */,
 				C41B5BCF1C3FF148006B601E /* DelaunaySwiftTests */,
+				D204F77E1FBA64480087FB56 /* TriangulationTest */,
 				C41B5BC21C3FF148006B601E /* Products */,
+				D204F78F1FBA64EC0087FB56 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,6 +174,7 @@
 				C41B5BCB1C3FF148006B601E /* DelaunaySwift.xctest */,
 				C41B5BE91C3FFDF8006B601E /* Triangulation.app */,
 				D2A9912A1F4863B600851EE9 /* DelaunaySwift.framework */,
+				D204F77D1FBA64480087FB56 /* TriangulationTest.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -206,6 +237,26 @@
 				C41B5BF71C3FFDF8006B601E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D204F77E1FBA64480087FB56 /* TriangulationTest */ = {
+			isa = PBXGroup;
+			children = (
+				D204F77F1FBA64480087FB56 /* AppDelegate.swift */,
+				D204F7811FBA64480087FB56 /* ViewController.swift */,
+				D204F7831FBA64480087FB56 /* Assets.xcassets */,
+				D204F7851FBA64480087FB56 /* Main.storyboard */,
+				D204F7881FBA64480087FB56 /* Info.plist */,
+				D204F7891FBA64480087FB56 /* TriangulationTest.entitlements */,
+			);
+			path = TriangulationTest;
+			sourceTree = "<group>";
+		};
+		D204F78F1FBA64EC0087FB56 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +336,24 @@
 			productReference = C41B5BE91C3FFDF8006B601E /* Triangulation.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D204F77C1FBA64480087FB56 /* TriangulationTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D204F78C1FBA64480087FB56 /* Build configuration list for PBXNativeTarget "TriangulationTest" */;
+			buildPhases = (
+				D204F7791FBA64480087FB56 /* Sources */,
+				D204F77A1FBA64480087FB56 /* Frameworks */,
+				D204F77B1FBA64480087FB56 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D204F78E1FBA64E70087FB56 /* PBXTargetDependency */,
+			);
+			name = TriangulationTest;
+			productName = TriangulationTest;
+			productReference = D204F77D1FBA64480087FB56 /* TriangulationTest.app */;
+			productType = "com.apple.product-type.application";
+		};
 		D2A9911C1F4863B600851EE9 /* DelaunaySwift (MacOS) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2A991271F4863B600851EE9 /* Build configuration list for PBXNativeTarget "DelaunaySwift (MacOS)" */;
@@ -309,7 +378,7 @@
 		C41B5BB81C3FF148006B601E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0910;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = zero;
 				TargetAttributes = {
@@ -323,8 +392,13 @@
 					};
 					C41B5BE81C3FFDF8006B601E = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 2466624KEK;
+						DevelopmentTeam = DHKZ7WR43P;
 						LastSwiftMigration = 0800;
+					};
+					D204F77C1FBA64480087FB56 = {
+						CreatedOnToolsVersion = 9.1;
+						DevelopmentTeam = DHKZ7WR43P;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -341,9 +415,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				C41B5BE81C3FFDF8006B601E /* Triangulation */,
 				C41B5BC01C3FF148006B601E /* DelaunaySwift */,
 				C41B5BCA1C3FF148006B601E /* DelaunaySwiftTests */,
-				C41B5BE81C3FFDF8006B601E /* Triangulation */,
+				D204F77C1FBA64480087FB56 /* TriangulationTest */,
 				D2A9911C1F4863B600851EE9 /* DelaunaySwift (MacOS) */,
 			);
 		};
@@ -371,6 +446,15 @@
 				C41B5BF61C3FFDF8006B601E /* LaunchScreen.storyboard in Resources */,
 				C41B5BF31C3FFDF8006B601E /* Assets.xcassets in Resources */,
 				C41B5BF11C3FFDF8006B601E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D204F77B1FBA64480087FB56 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D204F7841FBA64480087FB56 /* Assets.xcassets in Resources */,
+				D204F7871FBA64480087FB56 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +501,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D204F7791FBA64480087FB56 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D204F7911FBA651A0087FB56 /* Utilities.swift in Sources */,
+				D204F7821FBA64480087FB56 /* ViewController.swift in Sources */,
+				D204F7801FBA64480087FB56 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2A9911D1F4863B600851EE9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -443,6 +537,11 @@
 			target = C41B5BC01C3FF148006B601E /* DelaunaySwift */;
 			targetProxy = C45BF35A1C4535C100DE404D /* PBXContainerItemProxy */;
 		};
+		D204F78E1FBA64E70087FB56 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2A9911C1F4863B600851EE9 /* DelaunaySwift (MacOS) */;
+			targetProxy = D204F78D1FBA64E70087FB56 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -460,6 +559,14 @@
 				C41B5BF51C3FFDF8006B601E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D204F7851FBA64480087FB56 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D204F7861FBA64480087FB56 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -629,7 +736,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2466624KEK;
+				DEVELOPMENT_TEAM = DHKZ7WR43P;
 				INFOPLIST_FILE = Triangulation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zero.Triangulation;
@@ -643,12 +750,75 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2466624KEK;
+				DEVELOPMENT_TEAM = DHKZ7WR43P;
 				INFOPLIST_FILE = Triangulation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zero.Triangulation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		D204F78A1FBA64480087FB56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = TriangulationTest/TriangulationTest.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DHKZ7WR43P;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = TriangulationTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sakrist.TriangulationTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		D204F78B1FBA64480087FB56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = TriangulationTest/TriangulationTest.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DHKZ7WR43P;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = TriangulationTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sakrist.TriangulationTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -734,6 +904,15 @@
 			buildConfigurations = (
 				C41B5BF91C3FFDF8006B601E /* Debug */,
 				C41B5BFA1C3FFDF8006B601E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D204F78C1FBA64480087FB56 /* Build configuration list for PBXNativeTarget "TriangulationTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D204F78A1FBA64480087FB56 /* Debug */,
+				D204F78B1FBA64480087FB56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

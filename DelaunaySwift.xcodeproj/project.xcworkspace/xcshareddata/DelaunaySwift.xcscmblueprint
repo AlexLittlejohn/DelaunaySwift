@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "CE823B72086F7D88C9D98AFA72EDE7116FD3A3BC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4F34F0B07C7F4B28ED5E240F592891CBB9FDA361" : 9223372036854775807,
+    "CE823B72086F7D88C9D98AFA72EDE7116FD3A3BC" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C29AC74F-4D1E-40E1-A357-23BCA0C5AE7C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4F34F0B07C7F4B28ED5E240F592891CBB9FDA361" : "",
+    "CE823B72086F7D88C9D98AFA72EDE7116FD3A3BC" : "DelaunaySwift\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "DelaunaySwift",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "DelaunaySwift.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sakrist\/BezierPathSwift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4F34F0B07C7F4B28ED5E240F592891CBB9FDA361"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sakrist\/DelaunaySwift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CE823B72086F7D88C9D98AFA72EDE7116FD3A3BC"
+    }
+  ]
+}

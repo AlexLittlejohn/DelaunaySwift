@@ -6,16 +6,25 @@
 //  Copyright © 2016 zero. All rights reserved.
 //
 
-import UIKit
+#if os(iOS)
+    import UIKit
+    public typealias OSColor = UIColor
+    public typealias OSViewController = UIViewController
+#elseif os(OSX)
+    import Cocoa
+    public typealias OSColor = NSColor
+    public typealias OSViewController = NSViewController
+#endif
+
 import DelaunaySwift
 
 extension Triangle {
     func toPath() -> CGPath {
         
         let path = CGMutablePath()
-        let point1 = vertex1.pointValue()
-        let point2 = vertex2.pointValue()
-        let point3 = vertex3.pointValue()
+        let point1 = self.v1()
+        let point2 = self.v2()
+        let point3 = self.v3()
         
         path.move(to: point1)
         path.addLine(to: point2)
@@ -50,12 +59,12 @@ extension CGFloat {
     }
 }
 
-extension UIColor {
-    func randomColor() -> UIColor {
+extension OSColor {
+    func randomColor() -> OSColor {
         let hue = CGFloat( Double.random() )  // 0.0 to 1.0
         let saturation: CGFloat = 0.5  // 0.5 to 1.0, away from white
         let brightness: CGFloat = 1.0  // 0.5 to 1.0, away from black
-        let color = UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
+        let color = OSColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
         return color
     }
 }
