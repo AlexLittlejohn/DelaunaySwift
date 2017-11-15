@@ -16,7 +16,7 @@ By default `index` of `Vertex` is `-1`. For `CDT` index should be set in order.
 
 Constrained Delaunay Triangulation implemented in the way its utilize Delaunay and then remove trianles for holes and triangles out of constraines. Future improvements can by applied test triangles before adding them to list in original Delaunay triangulation process.
 
-![Triangulation Example](https://raw.githubusercontent.com/sakrist/DelaunaySwift/master/triangulation_CDT.png)
+![Triangulation Example](triangulation_CDT.png)
 
 #### Simple Delauney
 Generate a set of vertices and pass them into `Delaunay().triangulate(vertices)` which will then return the optimal set of triangles.
