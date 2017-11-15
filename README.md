@@ -23,7 +23,7 @@ Generate a set of vertices and pass them into `Delaunay().triangulate(vertices)`
 
 See the example project for more details.
 
-![Triangulation Example](https://raw.githubusercontent.com/sakrist/DelaunaySwift/master/triangulation.png)
+![Triangulation Example](triangulation.png)
 
 
 
