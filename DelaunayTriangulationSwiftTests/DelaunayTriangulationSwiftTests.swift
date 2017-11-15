@@ -21,16 +21,35 @@ class DelaunayTriangulationSwiftTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testDelaunay() {
+        
+        var vertices = generateVertices()
+        var index = 0
+        for i in 0..<vertices.count {
+            vertices[i].index = index
+            index += 1
+        }
+        var holes_ = holes()
+        for i in 0..<holes_.count {
+            for j in 0..<holes_[i].count {
+                holes_[i][j].index = index
+                index += 1
+            }
+        }
+        
+        self.measure {
+            _ = CDT().triangulate(vertices, holes_)
+        }
+        
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testDelaunayHighDensity() {
+        let vertices = generateVertices(CGSize.init(width: 500, height: 500), cellSize: 5)
+        print("vertices.count ",vertices.count)
+//        self.measure {
+            _ = Delaunay().triangulate(vertices)
+//        }
     }
+        
     
 }

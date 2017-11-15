@@ -15,6 +15,9 @@ class ViewController: NSViewController {
         super.viewDidLoad()
 
         triangleTest()
+        
+//        triangleTest2()
+        
         // Do any additional setup after loading the view.
     }
 
@@ -23,32 +26,44 @@ class ViewController: NSViewController {
         // Update the view, if already loaded.
         }
     }
-    
-    func generateVertices() -> [Vertex] {
-    
-        var points = [Vertex]()
-        points.append(Vertex(x: 100, y: 100))
-        points.append(Vertex(x: 200, y: 100))
-        points.append(Vertex(x: 200, y: 200))
-        points.append(Vertex(x: 150, y: 200))
-        points.append(Vertex(x: 100, y: 300))
-        points.append(Vertex(x: 200, y: 300))
+
+    func triangleTest2() {
+        let vertices = generateVertices(self.view.frame.size, cellSize: 10)
+        print("vertices.count ", vertices.count)
+        let start = Date().timeIntervalSince1970
+        let triangles = Delaunay().triangulate(vertices)
+        let end = Date().timeIntervalSince1970
+        print("time sec: \(end - start)")  
         
-        return points
+        presentResult(triangles)
     }
     
     
     func triangleTest() {
         
-        let vertices = generateVertices()
-        
+        var vertices = generateVertices()
+        var index = 0
+        for i in 0..<vertices.count {
+            vertices[i].index = index
+            index += 1
+        }
+        var holes_ = holes()
+        for i in 0..<holes_.count {
+            for j in 0..<holes_[i].count {
+                holes_[i][j].index = index
+                index += 1
+            }
+        }
+
         let start = Date().timeIntervalSince1970
-        
-        let triangles = Delaunay().triangulate(vertices)
-        
+        let triangles = CDT().triangulate(vertices, holes_)
         let end = Date().timeIntervalSince1970
-        print("time: \(end - start)")
+        print("time: \(end - start)")  
         
+        presentResult(triangles)
+    }
+    
+    func presentResult(_ triangles:[Triangle]) {
         for triangle in triangles {
             let triangleLayer = CAShapeLayer()
             triangleLayer.path = triangle.toPath()

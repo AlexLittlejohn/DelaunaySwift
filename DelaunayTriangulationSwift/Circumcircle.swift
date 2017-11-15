@@ -11,7 +11,16 @@ internal struct Circumcircle {
     let vertex1: Vertex
     let vertex2: Vertex
     let vertex3: Vertex
-    let x: Double
-    let y: Double
+    let c: Vertex
     let rsqr: Double
+    
+    init(vertex1: Vertex, vertex2: Vertex, vertex3: Vertex, c: Vertex) {
+        self.vertex1 = vertex1
+        self.vertex2 = vertex2
+        self.vertex3 = vertex3
+        self.c = c
+        self.rsqr = (vertex2 - c).lengthSqrt()
+    }
 }
+
+

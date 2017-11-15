@@ -5,10 +5,12 @@
 //  Created by Alex Littlejohn on 2016/01/08.
 //  Copyright © 2016 zero. All rights reserved.
 //
+//  Improved and Extended by Volodymyr Boichentsov on 14/11/2017
 
 import Darwin
 
-@objc open class Delaunay : NSObject {
+@objcMembers
+open class Delaunay : NSObject {
     
     public override init() { }
     
@@ -33,9 +35,9 @@ import Darwin
         let ymid = ymin + dy * 0.5
         
         return [
-            Vertex(x: xmid - 20 * dmax, y: ymid - dmax),
-            Vertex(x: xmid, y: ymid + 20 * dmax),
-            Vertex(x: xmid + 20 * dmax, y: ymid - dmax)
+            Vertex(x: xmid - 20 * dmax, y: ymid - dmax, i: 9000000001),
+            Vertex(x: xmid, y: ymid + 20 * dmax, i: 9000000002),
+            Vertex(x: xmid + 20 * dmax, y: ymid - dmax, i: 9000000003)
         ]
     }
     
@@ -47,50 +49,44 @@ import Darwin
         let y2 = j.y
         let x3 = k.x
         let y3 = k.y
-        let xc: Double
-        let yc: Double
+        var c = Vertex(x: 0, y: 0)
         
         let fabsy1y2 = abs(y1 - y2)
         let fabsy2y3 = abs(y2 - y3)
         
         if fabsy1y2 < Double.ulpOfOne {
             let m2 = -((x3 - x2) / (y3 - y2))
-            let mx2 = (x2 + x3) / 2
-            let my2 = (y2 + y3) / 2
-            xc = (x2 + x1) / 2
-            yc = m2 * (xc - mx2) + my2
+            let mx2 = (x2 + x3) / 2.0
+            let my2 = (y2 + y3) / 2.0
+            c.x = (x2 + x1) / 2.0
+            c.y = m2 * (c.x - mx2) + my2
         } else if fabsy2y3 < Double.ulpOfOne {
             let m1 = -((x2 - x1) / (y2 - y1))
-            let mx1 = (x1 + x2) / 2
-            let my1 = (y1 + y2) / 2
-            xc = (x3 + x2) / 2
-            yc = m1 * (xc - mx1) + my1
+            let mx1 = (x1 + x2) / 2.0
+            let my1 = (y1 + y2) / 2.0
+            c.x = (x3 + x2) / 2.0
+            c.y = m1 * (c.x - mx1) + my1
         } else {
             let m1 = -((x2 - x1) / (y2 - y1))
             let m2 = -((x3 - x2) / (y3 - y2))
-            let mx1 = (x1 + x2) / 2
-            let mx2 = (x2 + x3) / 2
-            let my1 = (y1 + y2) / 2
-            let my2 = (y2 + y3) / 2
-            xc = (m1 * mx1 - m2 * mx2 + my2 - my1) / (m1 - m2)
+            let mx1 = (x1 + x2) / 2.0
+            let mx2 = (x2 + x3) / 2.0
+            let my1 = (y1 + y2) / 2.0
+            let my2 = (y2 + y3) / 2.0
+            c.x = (m1 * mx1 - m2 * mx2 + my2 - my1) / (m1 - m2)
             
             if fabsy1y2 > fabsy2y3 {
-                yc = m1 * (xc - mx1) + my1
+                c.y = m1 * (c.x - mx1) + my1
             } else {
-                yc = m2 * (xc - mx2) + my2
+                c.y = m2 * (c.x - mx2) + my2
             }
         }
         
-        let dx = x2 - xc
-        let dy = y2 - yc
-        let rsqr = dx * dx + dy * dy
-        
-        return Circumcircle(vertex1: i, vertex2: j, vertex3: k, x: xc, y: yc, rsqr: rsqr)
+        return Circumcircle(vertex1: i, vertex2: j, vertex3: k, c: c)
     }
     
-    fileprivate func dedup(_ edges: [Vertex]) -> [Vertex] {
+    fileprivate func dedup(_ e: inout [Vertex]) {
         
-        var e = edges
         var a: Vertex?, b: Vertex?, m: Vertex?, n: Vertex?
         
         var j = e.count
@@ -107,21 +103,19 @@ import Darwin
                 i -= 1
                 m = e[i]
                 
-                if (a == m && b == n) || (a == n && b == m) {
+                if (a?.index == m?.index && b?.index == n?.index) || 
+                   (a?.index == n?.index && b?.index == m?.index) {
                     e.removeSubrange(j...j + 1)
                     e.removeSubrange(i...i + 1)
                     break
                 }
             }
         }
-        
-        return e
     }
     
     open func triangulate(_ vertices: [Vertex]) -> [Triangle] {
         
         var _vertices = Array(Set.init(vertices)) 
-//        var _vertices = vertices.removeDuplicates()
         
         guard _vertices.count >= 3 else {
             return [Triangle]()
@@ -160,7 +154,7 @@ import Darwin
                 /* If this point is to the right of this triangle's circumcircle,
                 * then this triangle should never get checked again. Remove it
                 * from the open list, add it to the closed list, and skip. */
-                let dx = _vertices[c].x - open[j].x
+                let dx = _vertices[c].x - open[j].c.x
                 
                 if dx > 0 && dx * dx > open[j].rsqr {
                     completed.append(open.remove(at: j))
@@ -168,7 +162,7 @@ import Darwin
                 }
                 
                 /* If we're outside the circumcircle, skip this triangle. */
-                let dy = _vertices[c].y - open[j].y
+                let dy = _vertices[c].y - open[j].c.y
                 
                 if dx * dx + dy * dy - open[j].rsqr > Double.ulpOfOne {
                     continue
@@ -180,18 +174,12 @@ import Darwin
                     open[j].vertex2, open[j].vertex3,
                     open[j].vertex3, open[j].vertex1
                 ]
-                
-//                edges += [
-//                    Edge(vertex1: open[j].vertex1, vertex2: open[j].vertex2),
-//                    Edge(vertex1: open[j].vertex2, vertex2: open[j].vertex3),
-//                    Edge(vertex1: open[j].vertex3, vertex2: open[j].vertex1)
-//                ]
-                
+                                
                 open.remove(at: j)
             }
             
             /* Remove any doubled edges. */
-            edges = dedup(edges)
+            dedup(&edges)
             
             /* Add a new triangle for each edge. */
             var j = edges.count
