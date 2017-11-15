@@ -8,6 +8,8 @@
 //  Improved and Extended by Volodymyr Boichentsov on 14/11/2017
 
 import Darwin
+import Foundation
+
 
 @objcMembers
 open class Delaunay : NSObject {
