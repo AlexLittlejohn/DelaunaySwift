@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import DelaunaySwift
+import Delaunay
 
 class ViewController: NSViewController {
 

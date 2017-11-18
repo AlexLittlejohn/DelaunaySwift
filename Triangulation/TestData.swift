@@ -8,7 +8,7 @@
 
 import Foundation
 import GameplayKit
-import DelaunaySwift
+import Delaunay
 
 /// Generate set of vertices for our triangulation to use
 func generateVertices(_ size: CGSize, cellSize: CGFloat, variance: CGFloat = 0.75, seed: UInt64 = numericCast(arc4random())) -> [Vertex] {

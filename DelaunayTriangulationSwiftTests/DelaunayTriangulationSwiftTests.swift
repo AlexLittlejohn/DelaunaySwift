@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import DelaunaySwift
+@testable import Delaunay
 
 class DelaunayTriangulationSwiftTests: XCTestCase {
     

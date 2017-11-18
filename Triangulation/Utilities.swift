@@ -16,7 +16,7 @@
     public typealias OSViewController = NSViewController
 #endif
 
-import DelaunaySwift
+import Delaunay
 
 extension Triangle {
     func toPath() -> CGPath {
