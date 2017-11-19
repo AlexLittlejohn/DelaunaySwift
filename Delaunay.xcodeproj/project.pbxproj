@@ -11,7 +11,7 @@
 		C41B5BD11C3FF148006B601E /* DelaunayTriangulationSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BD01C3FF148006B601E /* DelaunayTriangulationSwiftTests.swift */; };
 		C41B5BDC1C3FF667006B601E /* Delaunay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BDB1C3FF667006B601E /* Delaunay.swift */; };
 		C41B5BE01C3FF703006B601E /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BDF1C3FF703006B601E /* Triangle.swift */; };
-		C41B5BE21C3FF72E006B601E /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BE11C3FF72E006B601E /* Vertex.swift */; };
+		C41B5BE21C3FF72E006B601E /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BE11C3FF72E006B601E /* Point.swift */; };
 		C41B5BE41C3FF751006B601E /* CircumCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BE31C3FF751006B601E /* CircumCircle.swift */; };
 		C41B5BEC1C3FFDF8006B601E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BEB1C3FFDF8006B601E /* AppDelegate.swift */; };
 		C41B5BEE1C3FFDF8006B601E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BED1C3FFDF8006B601E /* ViewController.swift */; };
@@ -33,7 +33,7 @@
 		D2A9911E1F4863B600851EE9 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BDF1C3FF703006B601E /* Triangle.swift */; };
 		D2A9911F1F4863B600851EE9 /* Delaunay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BDB1C3FF667006B601E /* Delaunay.swift */; };
 		D2A991201F4863B600851EE9 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E432A81CB684DD006E3BC0 /* Edge.swift */; };
-		D2A991211F4863B600851EE9 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BE11C3FF72E006B601E /* Vertex.swift */; };
+		D2A991211F4863B600851EE9 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BE11C3FF72E006B601E /* Point.swift */; };
 		D2A991221F4863B600851EE9 /* CircumCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BE31C3FF751006B601E /* CircumCircle.swift */; };
 		D2A991251F4863B600851EE9 /* DelaunaySwift.h in Headers */ = {isa = PBXBuildFile; fileRef = C41B5BC41C3FF148006B601E /* DelaunaySwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D2E7B84E1FBB600D00EFAA70 /* CDT.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E7B84D1FBB600D00EFAA70 /* CDT.swift */; };
@@ -44,8 +44,8 @@
 		D2E7B8581FBC49D800EFAA70 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E7B8521FBBB12600EFAA70 /* TestData.swift */; };
 		D2E7B8591FBC4A1B00EFAA70 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BFF1C3FFF49006B601E /* Utilities.swift */; };
 		D2E7B85A1FBC4A1C00EFAA70 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BFF1C3FFF49006B601E /* Utilities.swift */; };
-		D2EDF8671FBB400D009993CA /* Polygon2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDF8661FBB400D009993CA /* Polygon2D.swift */; };
-		D2EDF8681FBB400D009993CA /* Polygon2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDF8661FBB400D009993CA /* Polygon2D.swift */; };
+		D2EDF8671FBB400D009993CA /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDF8661FBB400D009993CA /* Polygon.swift */; };
+		D2EDF8681FBB400D009993CA /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EDF8661FBB400D009993CA /* Polygon.swift */; };
 		D2EDF88A1FBB5BB5009993CA /* Delaunay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2A9912A1F4863B600851EE9 /* Delaunay.framework */; };
 		D2EDF8901FBB5BF6009993CA /* DelaunayTriangulationSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BD01C3FF148006B601E /* DelaunayTriangulationSwiftTests.swift */; };
 		D2EDF8911FBB5BF6009993CA /* EquatableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E432AA1CB68629006E3BC0 /* EquatableTests.swift */; };
@@ -108,7 +108,7 @@
 		C41B5BD21C3FF148006B601E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C41B5BDB1C3FF667006B601E /* Delaunay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delaunay.swift; sourceTree = "<group>"; };
 		C41B5BDF1C3FF703006B601E /* Triangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
-		C41B5BE11C3FF72E006B601E /* Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
+		C41B5BE11C3FF72E006B601E /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		C41B5BE31C3FF751006B601E /* CircumCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircumCircle.swift; sourceTree = "<group>"; };
 		C41B5BE91C3FFDF8006B601E /* Triangulation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Triangulation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C41B5BEB1C3FFDF8006B601E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,8 +132,8 @@
 		D2A991371F4865B000851EE9 /* DelaunaySwift_MacOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DelaunaySwift_MacOS-Info.plist"; sourceTree = "<group>"; };
 		D2E7B84D1FBB600D00EFAA70 /* CDT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDT.swift; sourceTree = "<group>"; };
 		D2E7B8521FBBB12600EFAA70 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
-		D2EDF8661FBB400D009993CA /* Polygon2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Polygon2D.swift; sourceTree = "<group>"; };
-		D2EDF8851FBB5BB5009993CA /* DelaunaySwiftTestsMac.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DelaunaySwiftTestsMac.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2EDF8661FBB400D009993CA /* Polygon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
+		D2EDF8851FBB5BB5009993CA /* DelaunaySwiftTestsMac.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = DelaunaySwiftTestsMac.xctest; path = DelaunayTestsMac.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2EDF8921FBB5C05009993CA /* Info-mac.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-mac.plist"; sourceTree = "<group>"; };
 		D2F918BB1F4AD19E0036548C /* Hash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -219,10 +219,10 @@
 				D2E7B84D1FBB600D00EFAA70 /* CDT.swift */,
 				C41B5BDB1C3FF667006B601E /* Delaunay.swift */,
 				C4E432A81CB684DD006E3BC0 /* Edge.swift */,
-				D2EDF8661FBB400D009993CA /* Polygon2D.swift */,
+				D2EDF8661FBB400D009993CA /* Polygon.swift */,
 				C41B5BE31C3FF751006B601E /* CircumCircle.swift */,
 				C41B5BDF1C3FF703006B601E /* Triangle.swift */,
-				C41B5BE11C3FF72E006B601E /* Vertex.swift */,
+				C41B5BE11C3FF72E006B601E /* Point.swift */,
 				D2F918BB1F4AD19E0036548C /* Hash.swift */,
 				C41B5BFB1C3FFE29006B601E /* Supporting Files */,
 			);
@@ -436,7 +436,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
 				LastUpgradeCheck = 0910;
-				ORGANIZATIONNAME = zero;
+				ORGANIZATIONNAME = sakrist;
 				TargetAttributes = {
 					C41B5BC01C3FF148006B601E = {
 						CreatedOnToolsVersion = 7.2;
@@ -549,9 +549,9 @@
 				D2F918BC1F4AD19E0036548C /* Hash.swift in Sources */,
 				C41B5BDC1C3FF667006B601E /* Delaunay.swift in Sources */,
 				C4E432A91CB684DD006E3BC0 /* Edge.swift in Sources */,
-				C41B5BE21C3FF72E006B601E /* Vertex.swift in Sources */,
+				C41B5BE21C3FF72E006B601E /* Point.swift in Sources */,
 				C41B5BE41C3FF751006B601E /* CircumCircle.swift in Sources */,
-				D2EDF8671FBB400D009993CA /* Polygon2D.swift in Sources */,
+				D2EDF8671FBB400D009993CA /* Polygon.swift in Sources */,
 				D2E7B84E1FBB600D00EFAA70 /* CDT.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -598,9 +598,9 @@
 				D2F918BD1F4AD19E0036548C /* Hash.swift in Sources */,
 				D2A9911F1F4863B600851EE9 /* Delaunay.swift in Sources */,
 				D2A991201F4863B600851EE9 /* Edge.swift in Sources */,
-				D2A991211F4863B600851EE9 /* Vertex.swift in Sources */,
+				D2A991211F4863B600851EE9 /* Point.swift in Sources */,
 				D2A991221F4863B600851EE9 /* CircumCircle.swift in Sources */,
-				D2EDF8681FBB400D009993CA /* Polygon2D.swift in Sources */,
+				D2EDF8681FBB400D009993CA /* Polygon.swift in Sources */,
 				D2E7B84F1FBB600D00EFAA70 /* CDT.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -959,7 +959,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				VALID_ARCHS = x86_64;
 			};
@@ -984,7 +984,7 @@
 				PRODUCT_NAME = Delaunay;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				VALID_ARCHS = x86_64;
 			};

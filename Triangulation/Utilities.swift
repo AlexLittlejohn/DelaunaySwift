@@ -37,11 +37,6 @@ extension Triangle {
     }
 }
 
-extension Vertex {
-    func pointValue() -> CGPoint {
-        return CGPoint(x: x, y: y)
-    }
-}
 
 extension Double {
     static func random() -> Double {

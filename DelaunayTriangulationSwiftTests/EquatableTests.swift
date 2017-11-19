@@ -25,8 +25,8 @@ class EquatableTests: XCTestCase {
             let x:Double = Double(arc4random()) * 0.000001
             let y:Double = Double(arc4random()) * 0.000001
             
-            let v1 = Vertex(x: x, y: y)
-            let v2 = Vertex(x: x, y: y)
+            let v1 = Point(x: x, y: y)
+            let v2 = Point(x: x, y: y)
         
             XCTAssertTrue(v1 == v2)
         }
@@ -45,8 +45,8 @@ class EquatableTests: XCTestCase {
                 x = x - 1.0
             }
             
-            let v1 = Vertex(x: x, y: y)
-            let v2 = Vertex(x: y, y: x)
+            let v1 = Point(x: x, y: y)
+            let v2 = Point(x: y, y: x)
             
             XCTAssertFalse(v1 == v2)
         }
@@ -54,8 +54,8 @@ class EquatableTests: XCTestCase {
     }
     
     func testEdgeEqual() {
-        let v1 = Vertex(x: 1.0, y: 1.0)
-        let v2 = Vertex(x: 2.0, y: 1.0)
+        let v1 = Point(x: 1.0, y: 1.0)
+        let v2 = Point(x: 2.0, y: 1.0)
         
         let e1 = Edge(first: v1, second: v2)
         let e2 = Edge(first: v1, second: v2)
@@ -64,9 +64,9 @@ class EquatableTests: XCTestCase {
     }
     
     func testEdgeNotEqual() {
-        let v1 = Vertex(x: 1.0, y: 1.0)
-        let v2 = Vertex(x: 1.0, y: 1.0)
-        let v3 = Vertex(x: 1.0, y: 1.1)
+        let v1 = Point(x: 1.0, y: 1.0)
+        let v2 = Point(x: 1.0, y: 1.0)
+        let v3 = Point(x: 1.0, y: 1.1)
         
         let e1 = Edge(first: v1, second: v2)
         let e2 = Edge(first: v2, second: v3)
@@ -76,26 +76,27 @@ class EquatableTests: XCTestCase {
     
     
     func testPolygon2D() {
-        var points = [Vertex]()
-        points.append(Vertex(x: 100, y: 100))
-        points.append(Vertex(x: 200, y: 100))
-        points.append(Vertex(x: 200, y: 200))
-        points.append(Vertex(x: 200, y: 300))
-        points.append(Vertex(x: 100, y: 300))
-        points.append(Vertex(x: 150, y: 200))
+        var points = [Point]()
+        points.append(Point(x: 100, y: 100))
+        points.append(Point(x: 200, y: 100))
+        points.append(Point(x: 200, y: 200))
+        points.append(Point(x: 200, y: 300))
+        points.append(Point(x: 100, y: 300))
+        points.append(Point(x: 150, y: 200))
         
-        let poly = Polygon2D(points)
+        let poly = Polygon(points)
         
         let testPoints = [
-            Vertex(x:5, y:5), // false
-            Vertex(x:50, y:100), // true
-            Vertex(x:90, y:120), // false
-            Vertex(x:110, y:120), // true
-            Vertex(x:120, y:200) // false
+            Point(x:5, y:5), // false
+            Point(x:50, y:100), // false
+            Point(x:90, y:120), // false
+            Point(x:110, y:120), // true
+            Point(x:120, y:200) // false
         ]
-        let results = [ false, true, false, true, false ]
+        let results = [ false, false, false, true, false ]
         var i = 0
         for p in testPoints {
+            print(poly.contain(vertex: p))
             XCTAssertTrue(poly.contain(vertex: p) == results[i])
             i = i + 1
         }

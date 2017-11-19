@@ -1,39 +1,60 @@
 //
 //  Triangle.swift
-//  DelaunayTriangulationSwift
+//  Delaunay
 //
-//  Created by Alex Littlejohn on 2016/01/08.
-//  Copyright © 2016 zero. All rights reserved.
-//
-//  Extendent by Volodymyr Boichentsov on 14/11/2017
+//  Created by Volodymyr Boichentsov on 14/11/2017.
+//  Copyright © 2017 sakrist. All rights reserved.
 
 import CoreGraphics
 
 /// A simple struct representing 3 vertices
 public struct Triangle {
     
-    public init(vertex1: Vertex, vertex2: Vertex, vertex3: Vertex) {
-        self.vertex1 = vertex1
-        self.vertex2 = vertex2
-        self.vertex3 = vertex3
-        self.centroid = (vertex1 + vertex2 + vertex3)/3.0
+    let centroid: Point
+    public let point1: Point
+    public let point2: Point
+    public let point3: Point
+    
+    public init(point1: Point, point2: Point, point3: Point) {
+        self.point1 = point1
+        self.point2 = point2
+        self.point3 = point3
+        self.centroid = (point1 + point2 + point3)/3.0
     }
     
-    let centroid: Vertex
-    public let vertex1: Vertex
-    public let vertex2: Vertex
-    public let vertex3: Vertex
+    public init(_ point1: Point, _ point2: Point, _ point3: Point) {
+        self.init(point1: point1, point2: point2, point3: point3)
+    }
+    
+    // Check wether point p is within triangle abc or on its border.
+    func contain(_ p:Point) -> Bool {
+        let u = point1 - point2
+        let v = point1 - point3
+        let vxu = v.cross(u)
+        let uxv = -vxu
+        
+        let w = point1 - p
+        let vxw = v.cross(w)
+        if (vxu * vxw < 0) {
+            return false
+        }
+        let uxw = u.cross(w)
+        if (uxv * uxw < 0) {
+            return false
+        }
+        return abs(uxw) + abs(vxw) <= abs(uxv)
+    }
     
     public func v1() -> CGPoint {
-        return vertex1.pointValue()
+        return point1.pointValue()
     }
     
     public func v2() -> CGPoint {
-        return vertex2.pointValue()
+        return point2.pointValue()
     }
     
     public func v3() -> CGPoint {
-        return vertex3.pointValue()
+        return point3.pointValue()
     }
     
 }

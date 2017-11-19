@@ -10,6 +10,8 @@
 import Darwin
 import Foundation
 
+// Original
+// http://paulbourke.net/papers/triangulate/
 
 @objcMembers
 open class Delaunay : NSObject {
@@ -17,7 +19,7 @@ open class Delaunay : NSObject {
     public override init() { }
     
     /* Generates a supertraingle containing all other triangles */
-    fileprivate func supertriangle(_ vertices: [Vertex]) -> [Vertex] {
+    fileprivate func supertriangle(_ vertices: [Point]) -> [Point] {
         var xmin = Double(Int32.max)
         var ymin = Double(Int32.max)
         var xmax = -Double(Int32.max)
@@ -37,96 +39,55 @@ open class Delaunay : NSObject {
         let ymid = ymin + dy * 0.5
         
         return [
-            Vertex(x: xmid - 20 * dmax, y: ymid - dmax, i: 9000000001),
-            Vertex(x: xmid, y: ymid + 20 * dmax, i: 9000000002),
-            Vertex(x: xmid + 20 * dmax, y: ymid - dmax, i: 9000000003)
+            Point(x: xmid - 20 * dmax, y: ymid - dmax, i: 9000000001),
+            Point(x: xmid, y: ymid + 20 * dmax, i: 9000000002),
+            Point(x: xmid + 20 * dmax, y: ymid - dmax, i: 9000000003)
         ]
     }
     
-    /* Calculate a circumcircle for a set of 3 vertices */
-    fileprivate func circumcircle(_ i: Vertex, j: Vertex, k: Vertex) -> Circumcircle {
-        let x1 = i.x
-        let y1 = i.y
-        let x2 = j.x
-        let y2 = j.y
-        let x3 = k.x
-        let y3 = k.y
-        var c = Vertex(x: 0, y: 0)
+    fileprivate func dedup(_ e: inout [Edge]) {
         
-        let fabsy1y2 = abs(y1 - y2)
-        let fabsy2y3 = abs(y2 - y3)
-        
-        if fabsy1y2 < Double.ulpOfOne {
-            let m2 = -((x3 - x2) / (y3 - y2))
-            let mx2 = (x2 + x3) / 2.0
-            let my2 = (y2 + y3) / 2.0
-            c.x = (x2 + x1) / 2.0
-            c.y = m2 * (c.x - mx2) + my2
-        } else if fabsy2y3 < Double.ulpOfOne {
-            let m1 = -((x2 - x1) / (y2 - y1))
-            let mx1 = (x1 + x2) / 2.0
-            let my1 = (y1 + y2) / 2.0
-            c.x = (x3 + x2) / 2.0
-            c.y = m1 * (c.x - mx1) + my1
-        } else {
-            let m1 = -((x2 - x1) / (y2 - y1))
-            let m2 = -((x3 - x2) / (y3 - y2))
-            let mx1 = (x1 + x2) / 2.0
-            let mx2 = (x2 + x3) / 2.0
-            let my1 = (y1 + y2) / 2.0
-            let my2 = (y2 + y3) / 2.0
-            c.x = (m1 * mx1 - m2 * mx2 + my2 - my1) / (m1 - m2)
-            
-            if fabsy1y2 > fabsy2y3 {
-                c.y = m1 * (c.x - mx1) + my1
-            } else {
-                c.y = m2 * (c.x - mx2) + my2
-            }
-        }
-        
-        return Circumcircle(vertex1: i, vertex2: j, vertex3: k, c: c)
-    }
-    
-    fileprivate func dedup(_ e: inout [Vertex]) {
-        
-        var a: Vertex?, b: Vertex?, m: Vertex?, n: Vertex?
+        var e1: Edge?, e2: Edge?
         
         var j = e.count
         while j > 0 {
             j -= 1
-            b = j < e.count ? e[j] : nil
-            j -= 1
-            a = j < e.count ? e[j] : nil
+            e1 = j < e.count ? e[j] : nil
             
             var i = j
             while i > 0 {
                 i -= 1
-                n = e[i]
-                i -= 1
-                m = e[i]
+                e2 = j < e.count ? e[i] : nil
                 
-                if (a?.index == m?.index && b?.index == n?.index) || 
-                   (a?.index == n?.index && b?.index == m?.index) {
-                    e.removeSubrange(j...j + 1)
-                    e.removeSubrange(i...i + 1)
+                if (e1 == e2 && e1 != nil) {
+                    e.removeSubrange(j...j)
+                    e.removeSubrange(i...i)
                     break
                 }
             }
         }
     }
     
-    open func triangulate(_ vertices: [Vertex]) -> [Triangle] {
-        
-        var _vertices = Array(Set.init(vertices)) 
+    func _removeDuplicates(_ vertices: [Point]) -> [Point] {
+        var _vertices = Array(Set(vertices))
+        _vertices.sort { (p1, p2) -> Bool in
+            return p1.index < p2.index
+        }
+        return _vertices
+    }
+    
+    open func triangulate(_ vertices: [Point]) -> [Triangle] {
+
+        var _vertices = _removeDuplicates(vertices) 
         
         guard _vertices.count >= 3 else {
             return [Triangle]()
         }
 
         let n = _vertices.count
-        var open = [Circumcircle]()
-        var completed = [Circumcircle]()
-        var edges = [Vertex]()
+        var open = [CircumCircle]()
+        var completed = [CircumCircle]()
+        var edges = [Edge]()
         
         /* Make an array of indices into the vertex array, sorted by the
         * vertices' x-position. */
@@ -140,7 +101,7 @@ open class Delaunay : NSObject {
         /* Initialize the open list (containing the supertriangle and nothing
         * else) and the closed list (which is empty since we havn't processed
         * any triangles yet). */
-        open.append(circumcircle(_vertices[n], j: _vertices[n + 1], k: _vertices[n + 2]))
+        open.append(CircumCircle(_vertices[n], _vertices[n + 1], _vertices[n + 2]))
         
         /* Incrementally add each vertex to the mesh. */
         for i in 0..<n {
@@ -164,17 +125,15 @@ open class Delaunay : NSObject {
                 }
                 
                 /* If we're outside the circumcircle, skip this triangle. */
-                let dy = _vertices[c].y - open[j].c.y
-                
-                if dx * dx + dy * dy - open[j].rsqr > Double.ulpOfOne {
+                if !open[j].contain(_vertices[c]) {
                     continue
-                }
+                }                
                 
                 /* Remove the triangle and add it's edges to the edge list. */
                 edges += [
-                    open[j].vertex1, open[j].vertex2,
-                    open[j].vertex2, open[j].vertex3,
-                    open[j].vertex3, open[j].vertex1
+                    Edge(open[j].point1, open[j].point2),
+                    Edge(open[j].point2, open[j].point3),
+                    Edge(open[j].point3, open[j].point1)
                 ]
                                 
                 open.remove(at: j)
@@ -184,14 +143,8 @@ open class Delaunay : NSObject {
             dedup(&edges)
             
             /* Add a new triangle for each edge. */
-            var j = edges.count
-            while j > 0 {
-                
-                j -= 1
-                let b = edges[j]
-                j -= 1
-                let a = edges[j]
-                open.append(circumcircle(a, j: b, k: _vertices[c]))
+            for e in edges {
+                open.append(CircumCircle(e.a, e.b, _vertices[c]))
             }
         }
         
@@ -200,17 +153,17 @@ open class Delaunay : NSObject {
         * building a list of triplets that represent triangles. */
         completed += open
         
-        let ignored: Set<Vertex> = [_vertices[n], _vertices[n + 1], _vertices[n + 2]]
+        let ignored: Set<Point> = [_vertices[n], _vertices[n + 1], _vertices[n + 2]]
         
         let results = completed.flatMap { (circumCircle) -> Triangle? in
             
-            let current: Set<Vertex> = [circumCircle.vertex1, circumCircle.vertex2, circumCircle.vertex3]
+            let current: Set<Point> = [circumCircle.point1, circumCircle.point2, circumCircle.point3]
             let intersection = ignored.intersection(current)
             if intersection.count > 0 {
                 return nil
             }
             
-            return Triangle(vertex1: circumCircle.vertex1, vertex2: circumCircle.vertex2, vertex3: circumCircle.vertex3)
+            return circumCircle.triangle()
         }
         
         /* Yay, we're done! */
