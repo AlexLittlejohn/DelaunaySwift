@@ -17,10 +17,14 @@ public enum PolygonOrientation {
 public struct Polygon {
  
     public init(_ verts:[Point]) {
-        self.vertices = verts
+        var verts_ = verts
+        if verts.count > 1  && verts.last != verts.first{
+            verts_.append(verts.first!)
+        }
+        self.vertices = verts_
     }
     
-    public var vertices:[Point] = [Point]()
+    public let vertices:[Point]
 
     /// Test on Point inside of polygon.
     ///
