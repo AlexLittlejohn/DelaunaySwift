@@ -11,7 +11,11 @@ internal struct CircumCircle {
     let point1: Point
     let point2: Point
     let point3: Point
+    
+    /// center of circum circle
     let c: Point
+    
+    /// radius sqrt
     let rsqr: Double
     
     init(point1: Point, point2: Point, point3: Point) {
@@ -60,8 +64,9 @@ internal struct CircumCircle {
         self.init(point1: point1, point2: point2, point3: point3)
     }
     
+    /* Test if a point insdie of circum circle */ 
     func contain(_ p:Point) -> Bool {
-        return c.distanceSqrt(p) < rsqr
+        return p.distanceSqrt(c) - rsqr < Double.ulpOfOne
     }
     
     func triangle() -> Triangle {

@@ -10,10 +10,13 @@ import XCTest
 @testable import Delaunay
 
 class DelaunayTriangulationSwiftTests: XCTestCase {
+    var vertices = [Point]()
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        self.vertices = generateVertices(CGSize.init(width: 480, height: 480), cellSize: 5)
+        print("vertices.count ",vertices.count)
     }
     
     override func tearDown() {
@@ -44,8 +47,7 @@ class DelaunayTriangulationSwiftTests: XCTestCase {
     }
     
     func testDelaunayHighDensity() {
-        let vertices = generateVertices(CGSize.init(width: 500, height: 500), cellSize: 5)
-        print("vertices.count ",vertices.count)
+        
 //        self.measure {
             _ = Delaunay().triangulate(vertices)
 //        }

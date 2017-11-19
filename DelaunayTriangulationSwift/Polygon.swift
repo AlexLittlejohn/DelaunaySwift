@@ -26,7 +26,7 @@ public struct Polygon {
     ///
     /// - Parameter vertex: test vertex
     /// - Returns: true if inside polygon, flase - outside
-    public func contain(vertex:Point) -> Bool {
+    public func contain(_ vertex:Point) -> Bool {
         
         // original source
         // https://stackoverflow.com/questions/217578/how-can-i-determine-whether-a-2d-point-is-within-a-polygon

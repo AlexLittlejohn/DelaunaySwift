@@ -30,10 +30,6 @@ class EquatableTests: XCTestCase {
         
             XCTAssertTrue(v1 == v2)
         }
-        
-//        self.measure {
-//            var flag = (v1 == v2)
-//        }
     }
     
     func testVertexNotEqual() {
@@ -74,6 +70,47 @@ class EquatableTests: XCTestCase {
         XCTAssertFalse(e1 == e2)
     }
     
+    func testTriangle() {
+        let tri = Triangle(Point(x: 100, y: 100), Point(x: 150, y: 200), Point(x: 200, y: 100))
+        
+        XCTAssertTrue(tri.contain(Point(x: 100, y: 100)))
+        
+        XCTAssertFalse(tri.contain(Point(x: 100, y: 99)))
+        
+        XCTAssertTrue(tri.contain(Point(x: 150, y: 110)))
+        
+        XCTAssertFalse(tri.contain(Point(x: 150, y: 300)))
+        
+        XCTAssertTrue(tri.contain(Point(x: 125, y: 150)))
+        
+        XCTAssertFalse(tri.contain(Point(x: 124, y: 150)))
+        
+        XCTAssertTrue(tri.contain(Point(x: 175, y: 150)))
+        
+        XCTAssertFalse(tri.contain(Point(x: 176, y: 150)))
+    }
+    
+    func testCircumCircle() {
+        let tri = CircumCircle(Point(x: 100, y: 100), Point(x: 150, y: 200), Point(x: 200, y: 100))
+        
+        XCTAssertTrue(tri.contain(Point(x: 100, y: 100)))
+        XCTAssertFalse(tri.contain(Point(x: 100, y: 99)))
+        
+        XCTAssertTrue(tri.contain(Point(x: 150, y: 200)))
+        XCTAssertFalse(tri.contain(Point(x: 150, y: 201)))
+        
+        XCTAssertTrue(tri.contain(Point(x: 200, y: 100)))
+        XCTAssertFalse(tri.contain(Point(x: 200, y: 99)))
+        
+        XCTAssertTrue(tri.contain(Point(x: 150, y: 110)))
+        XCTAssertFalse(tri.contain(Point(x: 150, y: 300)))
+        XCTAssertTrue(tri.contain(Point(x: 125, y: 150)))
+        XCTAssertTrue(tri.contain(Point(x: 124, y: 150)))
+        XCTAssertTrue(tri.contain(Point(x: 175, y: 150)))
+        XCTAssertTrue(tri.contain(Point(x: 176, y: 150)))
+        XCTAssertFalse(tri.contain(Point(x: 200, y: 200)))
+    }
+    
     
     func testPolygon2D() {
         var points = [Point]()
@@ -96,8 +133,8 @@ class EquatableTests: XCTestCase {
         let results = [ false, false, false, true, false ]
         var i = 0
         for p in testPoints {
-            print(poly.contain(vertex: p))
-            XCTAssertTrue(poly.contain(vertex: p) == results[i])
+            print(poly.contain(p))
+            XCTAssertTrue(poly.contain(p) == results[i])
             i = i + 1
         }
     }

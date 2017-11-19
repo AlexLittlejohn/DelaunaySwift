@@ -38,12 +38,12 @@ open class CDT : Delaunay {
         for item in triangles {
             var inHole = false 
             for hole in holes {
-                if hole.contain(vertex: item.centroid) {
+                if hole.contain(item.centroid) {
                     inHole = true
                     break
                 }
             }
-            if !inHole && polygon.contain(vertex: item.centroid) {
+            if !inHole && polygon.contain(item.centroid) {
                 trianglesCopy.append(item)
             }   
         }
