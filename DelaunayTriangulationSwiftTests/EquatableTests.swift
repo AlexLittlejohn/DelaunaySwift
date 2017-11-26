@@ -68,6 +68,13 @@ class EquatableTests: XCTestCase {
         let e2 = Edge(first: v2, second: v3)
         
         XCTAssertFalse(e1 == e2)
+        
+        let ee1 = Edge(first: Point(x:100,y:100), second: Point(x:100,y:200))
+        let ee2 = Edge(first: Point(x:100,y:200), second: Point(x:200,y:200))
+        let ee3 = Edge(first: Point(x:100,y:201), second: Point(x:200,y:200))
+        
+        XCTAssertTrue(ee1.intersect(edge:ee2))
+        XCTAssertFalse(ee1.intersect(edge:ee3))
     }
     
     func testTriangle() {

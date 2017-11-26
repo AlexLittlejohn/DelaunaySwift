@@ -11,12 +11,34 @@ import XCTest
 
 class DelaunayTriangulationSwiftTests: XCTestCase {
     var vertices = [Point]()
+    var vertices2 = [Point]()
+    var holes_ = [[Point]]()
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         self.vertices = generateVertices(CGSize.init(width: 480, height: 480), cellSize: 5)
         print("vertices.count ",vertices.count)
+        
+        
+        var vertices_v = generateVertices()
+        vertices2 = [Point]()
+        var index = 0
+        let count = vertices_v.count
+        for i in 0..<count {
+            var p = vertices_v[count-1-i]
+            p.index = index 
+            vertices2.append(p)
+            index += 1
+        }
+        
+        holes_ = holes()
+        for i in 0..<holes_.count {
+            for j in 0..<holes_[i].count {
+                holes_[i][j].index = index
+                index += 1
+            }
+        }
     }
     
     override func tearDown() {
@@ -52,6 +74,20 @@ class DelaunayTriangulationSwiftTests: XCTestCase {
             _ = Delaunay().triangulate(vertices)
 //        }
     }
+    
+    func testSpeed() {
+        
+
+//        measure {
+            let edges = Delaunay2().triangulate(vertices2, holes_)
+//        }
+        
+//        measure {
+//            let edges = CDT().triangulate(vertices_v, holes_)
+//        }
+        
+    }
+    
         
     
 }

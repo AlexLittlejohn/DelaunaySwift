@@ -76,6 +76,15 @@ extension Point: Hashable {
 }
 
 
+extension Array {
+    mutating func pop() -> Element? {
+        let last = self.last
+        self.removeLast()
+        return last
+    }
+}
+
+
 //  Created by Alex Littlejohn on 2016/01/08.
 
 extension Point: Equatable { 
@@ -84,7 +93,16 @@ extension Point: Equatable {
     }
 }
 
+extension Array where Element: AnyObject {
+    mutating func remove(object: Element) {
+        if let index = index(where: { $0 === object }) {
+            remove(at: index)
+        }
+    }
+}
+
 extension Array where Element:Equatable {
+    
     public func removeDuplicates() -> [Element] {
         var result = [Element]()
         

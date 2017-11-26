@@ -58,3 +58,10 @@ public struct Triangle {
     }
     
 }
+
+extension Triangle: Equatable { 
+    static public func ==(lhs: Triangle, rhs: Triangle) -> Bool {
+        let inds = [lhs.point1.index, lhs.point2.index, lhs.point3.index]
+        return inds.contains(rhs.point1.index) && inds.contains(rhs.point2.index) && inds.contains(rhs.point3.index) 
+    }
+}

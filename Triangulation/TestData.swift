@@ -209,3 +209,29 @@ func holes() -> [[Point]] {
     ]
     return holes
 }
+
+
+func testShape() -> ([Point], [[Point]]) {
+    let verts = [Point(x: 100, y: 200), // 0
+    Point(x: 100, y: 300), // 1
+    Point(x: 300, y: 400), // 2
+    Point(x: 300, y: 300), // 3
+    Point(x: 400, y: 200), // 4
+    Point(x: 300, y: 200), // 5
+    Point(x: 300, y: 100), // 6
+    Point(x: 200, y: 200), // 7
+        Point(x: 200, y: 100) // 8
+]
+    
+    let holes = [[
+        Point(x: 150, y: 200), // 9
+        Point(x: 200, y: 200), // 10
+        Point(x: 250, y: 300), // 11
+        Point(x: 150, y: 300)  // 12
+    ]]
+    return (verts, holes)
+}
+
+
+
+

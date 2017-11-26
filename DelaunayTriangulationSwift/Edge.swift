@@ -5,9 +5,14 @@
 //  Created by Volodymyr Boichentsov on 14/11/2017.
 //  Copyright © 2017 sakrist. All rights reserved.
 
-struct Edge {
-    let a: Point
-    let b: Point
+public class Edge {
+    public var a: Point
+    public var b: Point
+    
+    var external = false
+    var fixed = false
+    
+    var pair:Edge?
     
     init(first: Point, second: Point) {
         self.a = first
@@ -26,10 +31,16 @@ struct Edge {
         return a == b
     }
     
+    func swap() {
+        let t = a
+        self.a = self.b
+        self.b = t
+    }
+    
     /// Returns boolean indicating whether edges ab and cd intersect.
     ///
     /// - Parameter edge: another edge for test
-    func intersect(edge:Edge) -> Bool {
+    public func intersect(edge:Edge) -> Bool {
         // The edges intersect only if the endpoints of one edge are on the opposite
         // sides of the other (both ways).
         let u = self.a - self.b
@@ -75,16 +86,16 @@ extension Edge {
 //  Copyright © 2016 zero. All rights reserved.
 
 extension Edge: Equatable {
-    static func ==(lhs: Edge, rhs: Edge) -> Bool {
+    public static func ==(lhs: Edge, rhs: Edge) -> Bool {
         return (lhs.a == rhs.a && lhs.b == rhs.b) || (lhs.a == rhs.b && lhs.b == rhs.a)
     }
 }
 
 extension Edge: Hashable {
-    var hashValue: Int {
+    public var hashValue: Int {
         var seed = UInt(0)
-        let preHashValue:Int = a.hashValue / b.hashValue + b.hashValue / a.hashValue
-        hash_combine(seed: &seed, value: UInt(bitPattern: preHashValue))
+        hash_combine(seed: &seed, value: UInt(bitPattern: a.hashValue))
+        hash_combine(seed: &seed, value: UInt(bitPattern: b.hashValue))
         return Int(bitPattern: seed)
     }
 }

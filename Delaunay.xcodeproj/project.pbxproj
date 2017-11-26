@@ -30,6 +30,10 @@
 		D204F7871FBA64480087FB56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D204F7851FBA64480087FB56 /* Main.storyboard */; };
 		D204F7901FBA64EC0087FB56 /* Delaunay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2A9912A1F4863B600851EE9 /* Delaunay.framework */; };
 		D204F7911FBA651A0087FB56 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BFF1C3FFF49006B601E /* Utilities.swift */; };
+		D244FBD81FC21230000C3B73 /* ConformingDelaunay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D244FBD71FC2122F000C3B73 /* ConformingDelaunay.swift */; };
+		D244FBD91FC21230000C3B73 /* ConformingDelaunay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D244FBD71FC2122F000C3B73 /* ConformingDelaunay.swift */; };
+		D244FBDC1FC240FC000C3B73 /* PointNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D244FBDB1FC240FC000C3B73 /* PointNode.swift */; };
+		D244FBDD1FC240FC000C3B73 /* PointNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D244FBDB1FC240FC000C3B73 /* PointNode.swift */; };
 		D2A9911E1F4863B600851EE9 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BDF1C3FF703006B601E /* Triangle.swift */; };
 		D2A9911F1F4863B600851EE9 /* Delaunay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BDB1C3FF667006B601E /* Delaunay.swift */; };
 		D2A991201F4863B600851EE9 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E432A81CB684DD006E3BC0 /* Edge.swift */; };
@@ -128,6 +132,8 @@
 		D204F7861FBA64480087FB56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D204F7881FBA64480087FB56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D204F7891FBA64480087FB56 /* TriangulationTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TriangulationTest.entitlements; sourceTree = "<group>"; };
+		D244FBD71FC2122F000C3B73 /* ConformingDelaunay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConformingDelaunay.swift; sourceTree = "<group>"; };
+		D244FBDB1FC240FC000C3B73 /* PointNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointNode.swift; sourceTree = "<group>"; };
 		D2A9912A1F4863B600851EE9 /* Delaunay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Delaunay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A991371F4865B000851EE9 /* DelaunaySwift_MacOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DelaunaySwift_MacOS-Info.plist"; sourceTree = "<group>"; };
 		D2E7B84D1FBB600D00EFAA70 /* CDT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDT.swift; sourceTree = "<group>"; };
@@ -218,11 +224,13 @@
 			children = (
 				D2E7B84D1FBB600D00EFAA70 /* CDT.swift */,
 				C41B5BDB1C3FF667006B601E /* Delaunay.swift */,
+				D244FBD71FC2122F000C3B73 /* ConformingDelaunay.swift */,
 				C4E432A81CB684DD006E3BC0 /* Edge.swift */,
 				D2EDF8661FBB400D009993CA /* Polygon.swift */,
 				C41B5BE31C3FF751006B601E /* CircumCircle.swift */,
 				C41B5BDF1C3FF703006B601E /* Triangle.swift */,
 				C41B5BE11C3FF72E006B601E /* Point.swift */,
+				D244FBDB1FC240FC000C3B73 /* PointNode.swift */,
 				D2F918BB1F4AD19E0036548C /* Hash.swift */,
 				C41B5BFB1C3FFE29006B601E /* Supporting Files */,
 			);
@@ -545,10 +553,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D244FBDC1FC240FC000C3B73 /* PointNode.swift in Sources */,
 				C41B5BE01C3FF703006B601E /* Triangle.swift in Sources */,
 				D2F918BC1F4AD19E0036548C /* Hash.swift in Sources */,
 				C41B5BDC1C3FF667006B601E /* Delaunay.swift in Sources */,
 				C4E432A91CB684DD006E3BC0 /* Edge.swift in Sources */,
+				D244FBD81FC21230000C3B73 /* ConformingDelaunay.swift in Sources */,
 				C41B5BE21C3FF72E006B601E /* Point.swift in Sources */,
 				C41B5BE41C3FF751006B601E /* CircumCircle.swift in Sources */,
 				D2EDF8671FBB400D009993CA /* Polygon.swift in Sources */,
@@ -594,10 +604,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D244FBDD1FC240FC000C3B73 /* PointNode.swift in Sources */,
 				D2A9911E1F4863B600851EE9 /* Triangle.swift in Sources */,
 				D2F918BD1F4AD19E0036548C /* Hash.swift in Sources */,
 				D2A9911F1F4863B600851EE9 /* Delaunay.swift in Sources */,
 				D2A991201F4863B600851EE9 /* Edge.swift in Sources */,
+				D244FBD91FC21230000C3B73 /* ConformingDelaunay.swift in Sources */,
 				D2A991211F4863B600851EE9 /* Point.swift in Sources */,
 				D2A991221F4863B600851EE9 /* CircumCircle.swift in Sources */,
 				D2EDF8681FBB400D009993CA /* Polygon.swift in Sources */,

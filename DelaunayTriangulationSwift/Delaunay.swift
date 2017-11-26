@@ -39,9 +39,9 @@ open class Delaunay : NSObject {
         let ymid = ymin + dy * 0.5
         
         return [
-            Point(x: xmid - 20 * dmax, y: ymid - dmax, i: 9000000001),
-            Point(x: xmid, y: ymid + 20 * dmax, i: 9000000002),
-            Point(x: xmid + 20 * dmax, y: ymid - dmax, i: 9000000003)
+            Point(x: xmid - 200 * dmax, y: ymid - dmax, i: 9000000001),
+            Point(x: xmid, y: ymid + 200 * dmax, i: 9000000002),
+            Point(x: xmid + 200 * dmax, y: ymid - dmax, i: 9000000003)
         ]
     }
     
