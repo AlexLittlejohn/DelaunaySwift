@@ -582,8 +582,9 @@ open class ConformingDelaunay : NSObject {
         var (coEdges, sideEdges) = makeQuadEdge(nodes:&allNodes, edges: &edges)
         
         _ = refineToDelaunay(nodes: &allNodes, edges: &edges, coEdges: &coEdges, sideEdges: &sideEdges)
+         
+        var tris = [Triangle]()
         
-//        var edgesCopy = edges 
         var edgesCopy = [Edge]()
         for e in edges { 
             edgesCopy.append(e)
@@ -602,48 +603,48 @@ open class ConformingDelaunay : NSObject {
             }
             return e1.a.index < e2.a.index
         }
-//        for e in edgesCopy {
-//            print("\(e.a.index) \(e.b.index)")
-//        }
         
-        var tris = [Triangle]()
-        
-        while edgesCopy.count > 0 {
-            let e0 = edgesCopy[0]
-            var tri = [e0.a, e0.b]
+        func findTriangle(_ e0:Edge) -> Triangle? {
             let node1 = allNodes[e0.b.index]
             for e1 in node1.edges {
-                if e0 != e1 && edgesCopy.contains(e1) {
+                if e0 != e1 {
                     let node2 = (e1.a.index == node1.point.index ) ? allNodes[e1.b.index] : allNodes[e1.a.index]
                     for e2 in node2.edges {
-                        if e1 != e2 && edgesCopy.contains(e2) && (e0.a.index == e2.b.index || e0.a.index == e2.a.index) {
-                            tri.append(node2.point)
+                        if e1 != e2 && (e0.a.index == e2.b.index || e0.a.index == e2.a.index) {
                             edgesCopy.remove(at: 0)
                             if let ind = edgesCopy.index(of: e1) {
                                 edgesCopy.remove(at: ind)
-                            } else {
-                                
-                                print("node")
                             }
                             if let ind = edgesCopy.index(of: e2) {
                                 edgesCopy.remove(at: ind)
-                            } else {
-                                
-                                print("node")
                             }
-                            break
+                            allNodes[e0.a.index].edges.remove(object: e0)
+                            allNodes[e0.b.index].edges.remove(object: e0)
+                            allNodes[e1.a.index].edges.remove(object: e1)
+                            allNodes[e1.b.index].edges.remove(object: e1)
+                            allNodes[e2.a.index].edges.remove(object: e2)
+                            allNodes[e2.b.index].edges.remove(object: e2)
+                            
+                            return Triangle(e0.a, e0.b, node2.point)
+                            
                         }
-                    }
-                    if tri.count == 3 {
-                        break
                     }
                 }
             }
-            if tri.count == 3 {
-                tris.append(Triangle(tri[0], tri[1], tri[2]))
+            return nil
+        }
+        
+        while edgesCopy.count > 0 {
+            let e0 = edgesCopy[0]
+            if let t = findTriangle(e0) {
+                tris.append(t)
             }
         }
         
+//        for e in edges {
+//            tris.append(Triangle(e.a, e.a, e.b))
+//        }
+//        
         
         return tris        
 //        return edges

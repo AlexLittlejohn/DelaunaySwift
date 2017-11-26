@@ -79,7 +79,7 @@ class DelaunayTriangulationSwiftTests: XCTestCase {
         
 
 //        measure {
-            let edges = Delaunay2().triangulate(vertices2, holes_)
+            let edges = ConformingDelaunay().triangulate(vertices2, holes_)
 //        }
         
 //        measure {
