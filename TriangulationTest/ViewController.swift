@@ -98,11 +98,11 @@ class ViewController: NSViewController {
 //        }
         
         
-//        let start = Date().timeIntervalSince1970
-//        
-//        let triangles = CDT().triangulate(vertices, holes_)
-//        let end = Date().timeIntervalSince1970
-//        print("time: \(end - start)")  
+        let start = Date().timeIntervalSince1970
+        
+        let triangles = CDT().triangulate(vertices, holes_)
+        let end = Date().timeIntervalSince1970
+        print("time: \(end - start)")  
 //        
 //        presentResult(triangles)
     }

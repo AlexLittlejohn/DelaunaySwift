@@ -440,7 +440,7 @@ open class ConformingDelaunay : NSObject {
         
         var edges = [Edge]()
         for item in allNodes {
-//            print("[\(item.point.x), \(item.point.y)], \n")
+//            print("[\(item.point.x), \(item.point.y)], ")
             let edge = item.edge
             edge.external = true
             edge.fixed = true
@@ -583,6 +583,8 @@ open class ConformingDelaunay : NSObject {
         
         _ = refineToDelaunay(nodes: &allNodes, edges: &edges, coEdges: &coEdges, sideEdges: &sideEdges)
          
+        let start = Date().timeIntervalSince1970
+        
         var tris = [Triangle]()
         
         var edgesCopy = [Edge]()
@@ -597,12 +599,12 @@ open class ConformingDelaunay : NSObject {
             }
         }
         
-        edgesCopy.sort { (e1, e2) -> Bool in
-            if e1.a.index == e2.a.index {
-                return e1.b.index < e2.b.index 
-            }
-            return e1.a.index < e2.a.index
-        }
+//        edgesCopy.sort { (e1, e2) -> Bool in
+//            if e1.a.index == e2.a.index {
+//                return e1.b.index < e2.b.index 
+//            }
+//            return e1.a.index < e2.a.index
+//        }
         
         func findTriangle(_ e0:Edge) -> Triangle? {
             let node1 = allNodes[e0.b.index]
@@ -625,12 +627,13 @@ open class ConformingDelaunay : NSObject {
                             allNodes[e2.a.index].edges.remove(object: e2)
                             allNodes[e2.b.index].edges.remove(object: e2)
                             
-                            return Triangle(e0.a, e0.b, node2.point)
-                            
+                            return Triangle(e0.a, e0.b, node2.point)           
                         }
                     }
                 }
             }
+            edgesCopy.remove(at: 0)
+            print("Edge was deleted, because no triangle for it. \(e0)")
             return nil
         }
         
@@ -640,15 +643,15 @@ open class ConformingDelaunay : NSObject {
                 tris.append(t)
             }
         }
+        let end = Date().timeIntervalSince1970
+        print("build triangles time: \(end - start)")
         
 //        for e in edges {
 //            tris.append(Triangle(e.a, e.a, e.b))
 //        }
-//        
+        
         
         return tris        
-//        return edges
-
     }
     
     
