@@ -12,13 +12,22 @@ class PointNode {
     
     let point:Point
     var prev:PointNode?
-    var next:PointNode?
+    var next:PointNode? {
+        didSet {
+            _edge = nil
+        }
+    }
     
     var edges = [Edge]()
     
+    fileprivate var _edge:Edge?
+    
     var edge:Edge {
         get {
-            return Edge(point, next?.point ?? Point(x:0, y:0))
+            if _edge == nil {
+                _edge = Edge(point, next?.point ?? Point(x:0, y:0)) 
+            }
+            return _edge!
         }
     }
     

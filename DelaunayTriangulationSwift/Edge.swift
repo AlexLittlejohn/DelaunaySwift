@@ -5,15 +5,13 @@
 //  Created by Volodymyr Boichentsov on 14/11/2017.
 //  Copyright © 2017 sakrist. All rights reserved.
 
-public class Edge {
+public struct Edge {
     public var a: Point
     public var b: Point
     
     var external = false
     var fixed = false
-    
-    var pair:Edge?
-    
+        
     init(first: Point, second: Point) {
         self.a = first
         self.b = second
@@ -31,7 +29,7 @@ public class Edge {
         return a == b
     }
     
-    func swap() {
+    mutating func swap() {
         let t = a
         self.a = self.b
         self.b = t
@@ -40,7 +38,8 @@ public class Edge {
     /// Returns boolean indicating whether edges ab and cd intersect.
     ///
     /// - Parameter edge: another edge for test
-    public func intersect(edge:Edge) -> Bool {
+    public func intersect(edge: Edge) -> Bool {
+
         // The edges intersect only if the endpoints of one edge are on the opposite
         // sides of the other (both ways).
         let u = self.a - self.b

@@ -17,7 +17,7 @@ class DelaunayTriangulationSwiftTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        self.vertices = generateVertices(CGSize.init(width: 480, height: 480), cellSize: 5)
+        self.vertices = generateVertices(CGSize.init(width: 480, height: 480), cellSize: 15)
         print("vertices.count ",vertices.count)
         
         
@@ -79,7 +79,16 @@ class DelaunayTriangulationSwiftTests: XCTestCase {
         
 
 //        measure {
-            let edges = ConformingDelaunay().triangulate(vertices2, holes_)
+        let edges = ConformingDelaunay().triangulate(vertices2, holes_)
+        _ = ConformingDelaunay().triangulate(vertices2, holes_)
+        _ = ConformingDelaunay().triangulate(vertices2, holes_)
+        _ = ConformingDelaunay().triangulate(vertices2, holes_)
+        _ = ConformingDelaunay().triangulate(vertices2, holes_)
+        _ = ConformingDelaunay().triangulate(vertices2, holes_)
+        _ = ConformingDelaunay().triangulate(vertices2, holes_)
+        _ = ConformingDelaunay().triangulate(vertices2, holes_)
+        _ = ConformingDelaunay().triangulate(vertices2, holes_)
+        _ = ConformingDelaunay().triangulate(vertices2, holes_)
 //        }
         
 //        measure {

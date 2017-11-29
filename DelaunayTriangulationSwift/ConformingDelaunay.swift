@@ -47,6 +47,14 @@ open class ConformingDelaunay : NSObject {
     }
     
     
+    func aux(_ ab:Edge, _ cd: Edge) -> (Bool) {
+        return cd.a.index != ab.a.index && 
+            cd.a.index != ab.b.index && 
+            cd.b.index != ab.a.index && 
+            cd.b.index != ab.b.index &&
+            ab.intersect(edge: cd)
+    }
+    
     // Checks wether any edge on path [nodeBeg, nodeEnd] intersects the segment ab.
     // If nodeEnd is not provided, nodeBeg is interpreted as lying on a cycle and
     // the whole cycle is tested. Edges spanned on equal (===) vertices are not
@@ -54,17 +62,9 @@ open class ConformingDelaunay : NSObject {
     func intersects (ab:Edge, nodeBeg:PointNode, nodeEnd:PointNode? = nil) -> Bool {
         var nodeBeg = nodeBeg
         var nodeEnd = nodeEnd
-        func aux(_ node:PointNode) -> (Bool) {
-            let cd = node.edge
-            return cd.a.index != ab.a.index && 
-                cd.a.index != ab.b.index && 
-                cd.b.index != ab.a.index && 
-                cd.b.index != ab.b.index &&
-                ab.intersect(edge: cd)
-        }
         
         if (nodeEnd == nil) {
-            if aux(nodeBeg) {
+            if aux(ab, nodeBeg.edge) {
                 return true
             }
             nodeEnd = nodeBeg
@@ -72,7 +72,7 @@ open class ConformingDelaunay : NSObject {
         }
         var node = nodeBeg
         while (node !== nodeEnd) {
-            if aux(node) {
+            if aux(ab, node.edge) {
                 return true
             }
             node = node.next!
@@ -362,8 +362,12 @@ open class ConformingDelaunay : NSObject {
         arraySubst4(&sideEdges[j3], j0, j )
         
         // Flip
-        nodes[edge.a.index].edges.remove(object:edge)
-        nodes[edge.b.index].edges.remove(object:edge)
+        if let ind = nodes[edge.a.index].edges.index(of: edge) {
+            nodes[edge.a.index].edges.remove(at: ind)
+        }
+        if let ind = nodes[edge.b.index].edges.index(of: edge) {
+            nodes[edge.b.index].edges.remove(at: ind)
+        }
         
         edges[j] = Edge(nodes[coEdges[j][0]].point, nodes[coEdges[j][1]].point)
         edges[j].external = edge.external
@@ -441,7 +445,7 @@ open class ConformingDelaunay : NSObject {
         var edges = [Edge]()
         for item in allNodes {
 //            print("[\(item.point.x), \(item.point.y)], ")
-            let edge = item.edge
+            var edge = item.edge
             edge.external = true
             edge.fixed = true
             edges.append(edge)
@@ -591,11 +595,10 @@ open class ConformingDelaunay : NSObject {
         for e in edges { 
             edgesCopy.append(e)
             if !e.external {
-                e.pair = Edge(e.b, e.a)
-                e.pair?.pair = e
-                allNodes[e.a.index].edges.append(e.pair!)
-                allNodes[e.b.index].edges.append(e.pair!)
-                edgesCopy.append(e.pair!)
+                let pairEdge = Edge(e.b, e.a)
+                allNodes[e.a.index].edges.append(pairEdge)
+                allNodes[e.b.index].edges.append(pairEdge)
+                edgesCopy.append(pairEdge)
             }
         }
         
@@ -620,12 +623,24 @@ open class ConformingDelaunay : NSObject {
                             if let ind = edgesCopy.index(of: e2) {
                                 edgesCopy.remove(at: ind)
                             }
-                            allNodes[e0.a.index].edges.remove(object: e0)
-                            allNodes[e0.b.index].edges.remove(object: e0)
-                            allNodes[e1.a.index].edges.remove(object: e1)
-                            allNodes[e1.b.index].edges.remove(object: e1)
-                            allNodes[e2.a.index].edges.remove(object: e2)
-                            allNodes[e2.b.index].edges.remove(object: e2)
+                            if let ind = allNodes[e0.a.index].edges.index(of: e0) {
+                                allNodes[e0.a.index].edges.remove(at: ind)
+                            }
+                            if let ind = allNodes[e0.b.index].edges.index(of: e0) {
+                                allNodes[e0.b.index].edges.remove(at: ind)
+                            }
+                            if let ind = allNodes[e1.a.index].edges.index(of: e1) {
+                                allNodes[e1.a.index].edges.remove(at: ind)
+                            }
+                            if let ind = allNodes[e1.b.index].edges.index(of: e1) {
+                                allNodes[e1.b.index].edges.remove(at: ind)
+                            }
+                            if let ind = allNodes[e2.a.index].edges.index(of: e2) {
+                                allNodes[e2.a.index].edges.remove(at: ind)
+                            }
+                            if let ind = allNodes[e2.b.index].edges.index(of: e2) {
+                                allNodes[e2.b.index].edges.remove(at: ind)
+                            }
                             
                             return Triangle(e0.a, e0.b, node2.point)           
                         }
