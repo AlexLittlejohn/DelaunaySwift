@@ -72,20 +72,26 @@ public struct Polygon {
         return result;
     }
     
-    public func orientation() -> PolygonOrientation {
-//        var area:Double = 0
-//        var v = vertices[poly[poly.length - 1]];
-//        for (var i = 0; i < poly.length; ++i) {
-//            var u = v;
-//            v = vertices[poly[i]];
-//            area += (u[0] + v[0]) * (u[1] - v[1])
-//        }
-//        if (area > 0)
-//        return 1;
-//        else if (area < 0)
-//        return -1;
-        
-        return .undefined
+    public var orientation:PolygonOrientation {
+        get {
+            if vertices.count == 0 {
+                return .undefined
+            }
+            
+            var area:Double = 0
+            var v = vertices.last!
+            for i in 0..<vertices.count {
+                let u = v
+                v = vertices[i]
+                area += (u.x + v.x) * (u.y - v.y)
+            }
+            if area > 0 {
+                return .clockwise
+            } else if area < 0 {
+                return .counterClockwise
+            }
+            return .undefined
+        }
     }
     
 }

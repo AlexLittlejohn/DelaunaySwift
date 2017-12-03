@@ -417,7 +417,7 @@ open class ConformingDelaunay : NSObject {
     
     open func triangulate(_ vertices: [Point], _ holesVertices:[[Point]]?) -> [Triangle] {
 
-        let _vertices = _removeDuplicates(vertices) 
+        var _vertices = _removeDuplicates(vertices)
         
         var allNodes = constructLinkedPolygon(_vertices)
         var polies = [allNodes.first!]
