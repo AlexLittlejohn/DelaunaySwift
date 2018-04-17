@@ -45,45 +45,48 @@ func generateVertices(_ size: CGSize, cellSize: CGFloat, variance: CGFloat = 0.7
 }
 
 class TriangleView: UIView {
+    var triangles: [Triangle] = []
+    var triangleLayers: [CALayer] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        commonInit()
     }
     
-    func commonInit() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(TriangleView.tapped))
-        addGestureRecognizer(tapGesture)
+    override func didMoveToSuperview() {
+        initTriangles()
     }
     
-    func tapped() {
-        if let sublayers = layer.sublayers {
-            for sublayer in sublayers {
-                sublayer.removeFromSuperlayer()
-            }
+    func initTriangles() {
+        for triangleLayer in triangleLayers {
+            triangleLayer.removeFromSuperlayer()
         }
-        setNeedsLayout()
-        layoutIfNeeded()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
+
         let vertices = generateVertices(bounds.size, cellSize: 80)
-
-        let triangles = Delaunay().triangulate(vertices)
-
+        
+        triangles = Delaunay().triangulate(vertices)
+        
+        triangleLayers = []
         for triangle in triangles {
             let triangleLayer = CAShapeLayer()
             triangleLayer.path = triangle.toPath()
             triangleLayer.fillColor = UIColor().randomColor().cgColor
             triangleLayer.backgroundColor = UIColor.clear.cgColor
             layer.addSublayer(triangleLayer)
+            
+            triangleLayers.append(triangleLayer)
+        }
+    }
+    
+    @IBAction func handleTap(recognizer: UITapGestureRecognizer) {
+        switch recognizer.state {
+            case .ended:
+                initTriangles()
+
+            default: ()
         }
     }
 }
