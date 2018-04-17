@@ -8,16 +8,16 @@
 
 import Darwin
 
-open class Delaunay {
+@objc open class Delaunay : NSObject {
     
-    public init() { }
+    public override init() { }
     
     /* Generates a supertraingle containing all other triangles */
     fileprivate func supertriangle(_ vertices: [Vertex]) -> [Vertex] {
         var xmin = Double(Int32.max)
         var ymin = Double(Int32.max)
-        var xmax = Double(Int32.min)
-        var ymax = Double(Int32.min)
+        var xmax = -Double(Int32.max)
+        var ymax = -Double(Int32.max)
         
         for i in 0..<vertices.count {
             if vertices[i].x < xmin { xmin = vertices[i].x }
@@ -120,7 +120,8 @@ open class Delaunay {
     
     open func triangulate(_ vertices: [Vertex]) -> [Triangle] {
         
-        var _vertices = vertices.removeDuplicates()
+        var _vertices = Array(Set.init(vertices)) 
+//        var _vertices = vertices.removeDuplicates()
         
         guard _vertices.count >= 3 else {
             return [Triangle]()
