@@ -15,12 +15,28 @@ public struct Vertex {
         self.y = y
     }
     
+    public init(point: CGPoint) {
+        self.x = Double(point.x)
+        self.y = Double(point.y)
+    }
+    
     public func pointValue() -> CGPoint {
         return CGPoint(x: x, y: y)
     }
     
     public let x: Double
     public let y: Double
+    
+    public func inside(_ triangle: Triangle) -> Bool {
+        func sign(p: Vertex, v0: Vertex, v1: Vertex) -> Double {
+            return (p.x - v1.x) * (v0.y - v1.y) - (v0.x - v1.x) * (p.y - v1.y)
+        }
+        
+        let s1 = sign(p: self, v0: triangle.vertex1, v1: triangle.vertex2)
+        let s2 = sign(p: self, v0: triangle.vertex2, v1: triangle.vertex3)
+        let s3 = sign(p: self, v0: triangle.vertex3, v1: triangle.vertex1)
+        return (s1 * s2 >= 0) && (s2 * s3 >= 0)
+    }
 }
 
 extension Vertex: Equatable { 
