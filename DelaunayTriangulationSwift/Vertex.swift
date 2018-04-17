@@ -21,6 +21,17 @@ public struct Vertex {
     
     public let x: Double
     public let y: Double
+    
+    public func inside(_ triangle: Triangle) -> Bool {
+        func sign(p: Vertex, v0: Vertex, v1: Vertex) -> Double {
+            return 0.0
+        }
+        
+        let s1 = sign(p: self, v0: triangle.vertex1, v1: triangle.vertex2)
+        let s2 = sign(p: self, v0: triangle.vertex2, v1: triangle.vertex3)
+        let s3 = sign(p: self, v0: triangle.vertex3, v1: triangle.vertex1)
+        return (s1 * s2 >= 0) && (s2 * s3 >= 0)
+    }
 }
 
 extension Vertex: Equatable { 
