@@ -45,8 +45,7 @@ func generateVertices(_ size: CGSize, cellSize: CGFloat, variance: CGFloat = 0.7
 }
 
 class TriangleView: UIView {
-    var triangles: [Triangle] = []
-    var triangleLayers: [CALayer] = []
+    var triangles: [(Triangle, CAShapeLayer)] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,32 +60,40 @@ class TriangleView: UIView {
     }
     
     func initTriangles() {
-        for triangleLayer in triangleLayers {
+        for (_, triangleLayer) in triangles {
             triangleLayer.removeFromSuperlayer()
         }
 
         let vertices = generateVertices(bounds.size, cellSize: 80)
+        let delaunayTriangles = Delaunay().triangulate(vertices)
         
-        triangles = Delaunay().triangulate(vertices)
-        
-        triangleLayers = []
-        for triangle in triangles {
+        triangles = []
+        for triangle in delaunayTriangles {
             let triangleLayer = CAShapeLayer()
             triangleLayer.path = triangle.toPath()
             triangleLayer.fillColor = UIColor().randomColor().cgColor
             triangleLayer.backgroundColor = UIColor.clear.cgColor
             layer.addSublayer(triangleLayer)
             
-            triangleLayers.append(triangleLayer)
+            triangles.append((triangle, triangleLayer))
         }
     }
     
-    @IBAction func handleTap(recognizer: UITapGestureRecognizer) {
-        switch recognizer.state {
-            case .ended:
-                initTriangles()
-
-            default: ()
+    @IBAction func singleTap(recognizer: UITapGestureRecognizer) {
+        if recognizer.state == .ended {
+            let tapLocation = recognizer.location(in: self)
+            let vertex = Vertex(point: tapLocation)
+            for (triangle, triangleLayer) in triangles {
+                if vertex.inside(triangle) {
+                    triangleLayer.fillColor = UIColor.black.cgColor
+                }
+            }
+        }
+    }
+    
+    @IBAction func doubleTap(recognizer: UITapGestureRecognizer) {
+        if recognizer.state == .ended {
+            initTriangles()
         }
     }
 }

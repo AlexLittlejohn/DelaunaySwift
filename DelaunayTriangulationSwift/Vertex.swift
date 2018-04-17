@@ -15,6 +15,11 @@ public struct Vertex {
         self.y = y
     }
     
+    public init(point: CGPoint) {
+        self.x = Double(point.x)
+        self.y = Double(point.y)
+    }
+    
     public func pointValue() -> CGPoint {
         return CGPoint(x: x, y: y)
     }
@@ -24,7 +29,7 @@ public struct Vertex {
     
     public func inside(_ triangle: Triangle) -> Bool {
         func sign(p: Vertex, v0: Vertex, v1: Vertex) -> Double {
-            return 0.0
+            return (p.x - v1.x) * (v0.y - v1.y) - (v0.x - v1.x) * (p.y - v1.y)
         }
         
         let s1 = sign(p: self, v0: triangle.vertex1, v1: triangle.vertex2)

@@ -88,6 +88,7 @@
 		C41B5BFF1C3FFF49006B601E /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C4E432A81CB684DD006E3BC0 /* Edge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
 		C4E432AA1CB68629006E3BC0 /* EquatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquatableTests.swift; sourceTree = "<group>"; };
+		D21CB51C20862CDE003490ED /* Triangulation-Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Triangulation-Example-Bridging-Header.h"; sourceTree = "<group>"; };
 		D2A9912A1F4863B600851EE9 /* DelaunaySwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DelaunaySwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A991371F4865B000851EE9 /* DelaunaySwift_MacOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DelaunaySwift_MacOS-Info.plist"; sourceTree = "<group>"; };
 		D2F918BB1F4AD19E0036548C /* Hash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
@@ -200,6 +201,7 @@
 		C41B5BFC1C3FFE3C006B601E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D21CB51C20862CDE003490ED /* Triangulation-Example-Bridging-Header.h */,
 				C41B5BEF1C3FFDF8006B601E /* Main.storyboard */,
 				C41B5BF21C3FFDF8006B601E /* Assets.xcassets */,
 				C41B5BF41C3FFDF8006B601E /* LaunchScreen.storyboard */,
@@ -634,6 +636,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zero.Triangulation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Triangulation/Triangulation-Example-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -648,6 +651,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zero.Triangulation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Triangulation/Triangulation-Example-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
