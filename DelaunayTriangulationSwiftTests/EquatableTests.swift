@@ -24,6 +24,10 @@ class EquatableTests: XCTestCase {
         let v2 = Vertex(x: 1.0, y: 1.0)
         
         XCTAssertTrue(v1 == v2)
+        
+        self.measure {
+            var flag = (v1 == v2)
+        }
     }
     
     func testVertexNotEqual() {
