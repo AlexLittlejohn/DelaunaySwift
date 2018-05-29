@@ -155,7 +155,7 @@ open class Delaunay : NSObject {
         
         let ignored: Set<Point> = [_vertices[n], _vertices[n + 1], _vertices[n + 2]]
         
-        let results = completed.flatMap { (circumCircle) -> Triangle? in
+        let results = completed.compactMap { (circumCircle) -> Triangle? in
             
             let current: Set<Point> = [circumCircle.point1, circumCircle.point2, circumCircle.point3]
             let intersection = ignored.intersection(current)

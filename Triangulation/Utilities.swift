@@ -5,6 +5,8 @@
 //  Created by Alex Littlejohn on 2016/01/08.
 //  Copyright © 2016 zero. All rights reserved.
 //
+//  Improved and Extended by Volodymyr Boichentsov on 14/11/2017
+
 
 #if os(iOS)
     import UIKit

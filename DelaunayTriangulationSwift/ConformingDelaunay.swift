@@ -252,8 +252,6 @@ open class ConformingDelaunay : NSObject {
                 unsureEdges.append(j)
             }
         }
-//        if (trace !== undefined)
-//        trace.push({ markedUnsure: unsureEdges.slice() });
         
         var cookie = 0;
         func maintainDelaunay(_ nodes: inout [PointNode], _ edges: inout [Edge], 
@@ -273,10 +271,8 @@ open class ConformingDelaunay : NSObject {
                 let j = unsureEdges.pop()!
                 unsure[j] = false;
                 
-//                var traceEntry = { ensured: j };
                 if (!edges[j].fixed &&
                     ensureDelaunayEdge(&nodes, &edges, &coEdges, &sideEdges, j)) {
-//                    traceEntry.flippedTo = edges[j].slice();
                     var newUnsureCnt = 0
                     for k in 0..<4  {
                         let jk = sideEdges[j][k]
@@ -292,13 +288,7 @@ open class ConformingDelaunay : NSObject {
                             }
                         }
                     }
-//                    if (newUnsureCnt > 0) {
-//                        traceEntry.markedUnsure = unsureEdges.slice(-newUnsureCnt);
-//                    }
                 }
-//                if (trace !== undefined) {
-//                    trace.push(traceEntry)
-//                }
             }
             
             return triedEdges
@@ -422,29 +412,16 @@ open class ConformingDelaunay : NSObject {
         var allNodes = constructLinkedPolygon(_vertices)
         var polies = [allNodes.first!]
         
-//        print("[")
-//        print("[")
-//        for item in allNodes {
-//            print("\(item.point.index), ")
-//        }
-//        print("], ")
         var holes = [PointNode]()
         let countHoles = holesVertices?.count ?? 0
         for i in 0..<countHoles {
             let hole = constructLinkedPolygon(holesVertices![i])
             holes.append(hole.first!)
-//            print("[")
-//            for item in hole {
-//                print("\(item.point.index), ")
-//            }
-//            print("], ")
             allNodes += hole
         }
-//        print("]")
         
         var edges = [Edge]()
         for item in allNodes {
-//            print("[\(item.point.x), \(item.point.y)], ")
             var edge = item.edge
             edge.external = true
             edge.fixed = true
@@ -453,10 +430,6 @@ open class ConformingDelaunay : NSObject {
             item.edges.append(edge)
             item.next?.edges.append(edge)
         }
-//        print(" \n")
-//        for e in edges {
-//            print("[\(e.a.index), \(e.b.index)], \n")
-//        }
         
         // We handle only the outer polygons. We start with only one, but more are
         // to come because of splitting. The holes are eventually merged in.
@@ -668,13 +641,5 @@ open class ConformingDelaunay : NSObject {
         
         return tris        
     }
-    
-    
-    
-    
-    
-    
-    
-    
     
 }
