@@ -14,7 +14,6 @@ import Foundation
 // https://github.com/mkacz91/Triangulations
 
 
-@objcMembers
 open class ConformingDelaunay : NSObject {
     
     public override init() { }

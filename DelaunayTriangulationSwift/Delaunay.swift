@@ -13,7 +13,6 @@ import Foundation
 // Original
 // http://paulbourke.net/papers/triangulate/
 
-@objcMembers
 open class Delaunay : NSObject {
     
     public override init() { }
