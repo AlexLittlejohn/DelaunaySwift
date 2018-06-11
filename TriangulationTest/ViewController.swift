@@ -59,50 +59,20 @@ class ViewController: NSViewController {
             }
         }
         
-//        let baseLayer = self.view.layer
-//        
-//        var (vertices, holes_) = testShape()
-//        var index = 0
-//        for i in 0..<vertices.count {
-//            vertices[i].index = index
-//            index += 1
-//        }
-//        for i in 0..<holes_.count {
-//            for j in 0..<holes_[i].count {
-//                holes_[i][j].index = index
-//                index += 1
-//            }
-//        }
-
-        
         let start0 = Date().timeIntervalSince1970
-//        let edges = ConformingDelaunay().triangulate(vertices, holes_)
         let triangles2 = ConformingDelaunay().triangulate(vertices, holes_)
         let end0 = Date().timeIntervalSince1970
-        print("Delaunay2 time: \(end0 - start0)")
+        print("ConformingDelaunay time: \(end0 - start0)")
         print("count: \(triangles2.count)")
          presentResult(triangles2)
-//        for item in edges {
-//            let path2:CGMutablePath = CGMutablePath.init()
-//            path2.move(to: item.a.pointValue())
-//            path2.addLine(to: item.b.pointValue())
-//            path2.closeSubpath()
-//            // Style Square
-//            let a = CAShapeLayer()
-//            a.path = path2
-//            a.strokeColor = OSColor.black.cgColor
-//            a.backgroundColor = OSColor.clear.cgColor
-//            a.opacity = 1.0
-//            a.lineWidth = 1
-//            baseLayer?.addSublayer(a)
-//        }
         
         
         let start = Date().timeIntervalSince1970
         
         let triangles = CDT().triangulate(vertices, holes_)
         let end = Date().timeIntervalSince1970
-        print("time: \(end - start)")  
+        print("CDT time: \(end - start)")
+        print("count: \(triangles.count)")
 //        
 //        presentResult(triangles)
     }

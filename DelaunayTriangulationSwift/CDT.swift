@@ -32,8 +32,6 @@ open class CDT : Delaunay {
         var trianglesCopy = [Triangle]()
         let polygon = Polygon(vertices)
         
-        let start = Date().timeIntervalSince1970
-        
         // filter triangles by polygon and holes
         for item in triangles {
             var inHole = false 
@@ -47,9 +45,6 @@ open class CDT : Delaunay {
                 trianglesCopy.append(item)
             }   
         }
-        
-        let end = Date().timeIntervalSince1970
-        print("filter time: \(end - start)")
         
         return trianglesCopy
     }

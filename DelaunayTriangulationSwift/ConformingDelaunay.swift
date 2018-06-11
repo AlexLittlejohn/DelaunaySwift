@@ -1,11 +1,10 @@
 //
 //  Delaunay.swift
-//  DelaunayTriangulationSwift
+//  Delaunay
 //
-//  Created by Alex Littlejohn on 2016/01/08.
-//  Copyright © 2016 zero. All rights reserved.
+//  Created by Volodymyr Boichentsov on 14/11/2017.
+//  Copyright © 2017 sakrist. All rights reserved.
 //
-//  Improved and Extended by Volodymyr Boichentsov on 14/11/2017
 
 import Darwin
 import Foundation
@@ -559,7 +558,6 @@ open class ConformingDelaunay : NSObject {
         
         _ = refineToDelaunay(nodes: &allNodes, edges: &edges, coEdges: &coEdges, sideEdges: &sideEdges)
          
-        let start = Date().timeIntervalSince1970
         
         var tris = [Triangle]()
         
@@ -630,8 +628,6 @@ open class ConformingDelaunay : NSObject {
                 tris.append(t)
             }
         }
-        let end = Date().timeIntervalSince1970
-        print("build triangles time: \(end - start)")
         
 //        for e in edges {
 //            tris.append(Triangle(e.a, e.a, e.b))
