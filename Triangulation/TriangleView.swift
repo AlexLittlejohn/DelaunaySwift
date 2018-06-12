@@ -52,7 +52,7 @@ class TriangleView: UIView {
         for triangle in triangles {
             let triangleLayer = CAShapeLayer()
             triangleLayer.path = triangle.toPath()
-            triangleLayer.fillColor = OSColor().randomColor().cgColor
+            triangleLayer.fillColor = OSColor.randomColor().cgColor
             triangleLayer.backgroundColor = OSColor.clear.cgColor
             layer.addSublayer(triangleLayer)
         }

@@ -92,7 +92,7 @@ class ViewController: NSViewController {
         triangleLayer.strokeColor = OSColor.black.cgColor
         triangleLayer.borderColor = OSColor.black.cgColor
         triangleLayer.fillColor = OSColor.gray.cgColor
-        triangleLayer.fillColor = OSColor().randomColor().cgColor
+        triangleLayer.fillColor = OSColor.randomColor().cgColor
         triangleLayer.backgroundColor = OSColor.clear.cgColor
         self.view.layer?.addSublayer(triangleLayer)
     }
