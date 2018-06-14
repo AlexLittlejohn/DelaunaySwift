@@ -113,28 +113,25 @@ open class Delaunay : NSObject {
             * it's edges to an edge list. */
             for j in (0..<open.count).reversed() {
                 
+                let openCircumCircle = open[j]
                 /* If this point is to the right of this triangle's circumcircle,
                 * then this triangle should never get checked again. Remove it
                 * from the open list, add it to the closed list, and skip. */
-                let dx = _vertices[c].x - open[j].c.x
+                let dx = _vertices[c].x - openCircumCircle.center.x
                 
-                if dx > 0 && dx * dx > open[j].rsqr {
+                if dx > 0 && dx * dx > openCircumCircle.rsqr {
                     completed.append(open.remove(at: j))
                     continue
                 }
                 
                 /* If we're outside the circumcircle, skip this triangle. */
-                if !open[j].contain(_vertices[c]) {
+                if !openCircumCircle.contain(_vertices[c]) {
                     continue
                 }                
                 
                 /* Remove the triangle and add it's edges to the edge list. */
-                edges += [
-                    Edge(open[j].point1, open[j].point2),
-                    Edge(open[j].point2, open[j].point3),
-                    Edge(open[j].point3, open[j].point1)
-                ]
-                                
+                edges += openCircumCircle.constructEdges()
+                
                 open.remove(at: j)
             }
             

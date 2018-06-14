@@ -9,16 +9,14 @@
 import Darwin
 import Foundation
 
-// Original
-// https://github.com/mkacz91/Triangulations
 
 
+/// Solution based on Ruppert's Algorithm. 
 open class ConformingDelaunay : NSObject {
     
     public override init() { }
     
-    // Given a polygon as a list of vertex indices, returns it in a form of
-    // a doubly linked list.
+    /// Given a polygon as a list of vertex indices, returns it in a form of a doubly linked list.
     func constructLinkedPolygon(_ vertices: [Point]) -> [PointNode] {
         var nodes = [PointNode]()
         nodes.append(PointNode(vertices[0]))

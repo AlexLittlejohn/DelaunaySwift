@@ -5,6 +5,9 @@
 //  Created by Volodymyr Boichentsov on 14/11/2017.
 //  Copyright © 2017 sakrist. All rights reserved.
 
+
+/// Edge is definition for line with start and end point. 
+/// Edge is part of Polygon on Triangle.
 public struct Edge {
     public var a: Point
     public var b: Point

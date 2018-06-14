@@ -13,7 +13,7 @@ internal struct CircumCircle {
     let point3: Point
     
     /// center of circum circle
-    let c: Point
+    let center: Point
     
     /// radius sqrt
     let rsqr: Double
@@ -31,15 +31,16 @@ internal struct CircumCircle {
                 cP = CircumCircle.center2(point1, point3, point2)
             }
         }
-        self.c = cP
+        self.center = cP
         
-        self.rsqr = point2.distanceSqrt(c)
+        self.rsqr = point2.distanceSqrt(center)
     }
     
     init(_ point1: Point, _ point2: Point, _ point3: Point) {
         self.init(point1: point1, point2: point2, point3: point3)
     }
     
+    // currently no in use, see center2 function 
     fileprivate static func center(_ point1: Point, _ point2: Point, _ point3: Point) -> Point {
         var cPoint = Point(x: 0, y: 0)
         let fabsy1y2 = abs(point1.y - point2.y)
@@ -90,12 +91,17 @@ internal struct CircumCircle {
     
     /* Test if a point insdie of circum circle */ 
     func contain(_ p:Point) -> Bool {
-        return p.distanceSqrt(c) - rsqr < Double.ulpOfOne
+        return p.distanceSqrt(center) - rsqr < Double.ulpOfOne
     }
     
     func triangle() -> Triangle {
         return Triangle(point1, point2, point3)
     }
+    
+    func constructEdges() -> [Edge] {
+        return [ Edge(point1, point2), Edge(point2, point3), Edge(point3, point1)]
+    }
+    
 }
 
 

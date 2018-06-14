@@ -64,7 +64,7 @@ class ViewController: NSViewController {
         let end0 = Date().timeIntervalSince1970
         print("ConformingDelaunay time: \(end0 - start0)")
         print("count: \(triangles2.count)")
-         presentResult(triangles2)
+        presentResult(triangles2)
         
         
         let start = Date().timeIntervalSince1970
