@@ -126,8 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				C41B5BEA1C3FFDF8006B601E /* TriangulationExample */,
-				C41B5BC31C3FF148006B601E /* DelaunaySwift */,
-				C41B5BCF1C3FF148006B601E /* DelaunaySwiftTests */,
+				C41B5BC31C3FF148006B601E /* DelaunayTriangulation */,
+				C41B5BCF1C3FF148006B601E /* DelaunayTriangulationTests */,
 				C41B5BC21C3FF148006B601E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -143,7 +143,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C41B5BC31C3FF148006B601E /* DelaunaySwift */ = {
+		C41B5BC31C3FF148006B601E /* DelaunayTriangulation */ = {
 			isa = PBXGroup;
 			children = (
 				C41B5BDB1C3FF667006B601E /* DelaunaySwift.swift */,
@@ -153,18 +153,16 @@
 				C41B5BE31C3FF751006B601E /* CircumCircle.swift */,
 				C41B5BFB1C3FFE29006B601E /* Supporting Files */,
 			);
-			name = DelaunaySwift;
-			path = DelaunayTriangulationSwift;
+			path = DelaunayTriangulation;
 			sourceTree = "<group>";
 		};
-		C41B5BCF1C3FF148006B601E /* DelaunaySwiftTests */ = {
+		C41B5BCF1C3FF148006B601E /* DelaunayTriangulationTests */ = {
 			isa = PBXGroup;
 			children = (
 				C41B5BD01C3FF148006B601E /* DelaunayTriangulationSwiftTests.swift */,
 				C41B5BD21C3FF148006B601E /* Info.plist */,
 			);
-			name = DelaunaySwiftTests;
-			path = DelaunayTriangulationSwiftTests;
+			path = DelaunayTriangulationTests;
 			sourceTree = "<group>";
 		};
 		C41B5BEA1C3FFDF8006B601E /* TriangulationExample */ = {
@@ -579,7 +577,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DelaunayTriangulationSwift/Info.plist;
+				INFOPLIST_FILE = DelaunayTriangulation/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zero.DelaunaySwift;
@@ -599,7 +597,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DelaunayTriangulationSwift/Info.plist;
+				INFOPLIST_FILE = DelaunayTriangulation/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zero.DelaunaySwift;
@@ -611,9 +609,9 @@
 		C41B5BD91C3FF148006B601E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = DelaunayTriangulationSwiftTests/Info.plist;
+				INFOPLIST_FILE = DelaunayTriangulationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zero.DelaunayTriangulationSwiftTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zero.DelaunayTriangulationTests;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)Tests";
 				PRODUCT_NAME = DelaunaySwift;
 			};
@@ -622,9 +620,9 @@
 		C41B5BDA1C3FF148006B601E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = DelaunayTriangulationSwiftTests/Info.plist;
+				INFOPLIST_FILE = DelaunayTriangulationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zero.DelaunayTriangulationSwiftTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zero.DelaunayTriangulationTests;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)Tests";
 				PRODUCT_NAME = DelaunaySwift;
 			};
@@ -666,7 +664,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "DelaunayTriangulationSwift/DelaunaySwift_MacOS-Info.plist";
+				INFOPLIST_FILE = "DelaunayTriangulation/DelaunaySwift_MacOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -689,7 +687,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "DelaunayTriangulationSwift/DelaunaySwift_MacOS-Info.plist";
+				INFOPLIST_FILE = "DelaunayTriangulation/DelaunaySwift_MacOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;

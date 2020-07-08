@@ -6,8 +6,7 @@
 //  Copyright © 2016 zero. All rights reserved.
 //
 
-
-struct Edge: Hashable {
-    let point1: Point
-    let point2: Point
-}
+//internal struct Edge: Hashable {
+//    let point1: Point
+//    let point2: Point
+//}
