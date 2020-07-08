@@ -6,7 +6,7 @@
 //  Copyright © 2016 zero. All rights reserved.
 //
 
-/// Represents a bounding circle for a set of 3 points
+/// Represents a circle which intersects a set of 3 points
 internal struct Circumcircle: Hashable {
     let point1: Point
     let point2: Point

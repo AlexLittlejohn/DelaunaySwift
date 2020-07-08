@@ -6,8 +6,6 @@
 //  Copyright © 2016 zero. All rights reserved.
 //
 
-import CoreGraphics
-
 /// A simple struct representing 3 points
 public struct Triangle: Hashable {
     
@@ -20,16 +18,4 @@ public struct Triangle: Hashable {
     public let point1: Point
     public let point2: Point
     public let point3: Point
-    
-    public func v1() -> CGPoint {
-        return point1.pointValue()
-    }
-    
-    public func v2() -> CGPoint {
-        return point2.pointValue()
-    }
-    
-    public func v3() -> CGPoint {
-        return point3.pointValue()
-    }
 }
