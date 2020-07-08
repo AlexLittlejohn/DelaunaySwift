@@ -8,28 +8,28 @@
 
 import CoreGraphics
 
-/// A simple struct representing 3 vertices
-public struct Triangle {
+/// A simple struct representing 3 points
+public struct Triangle: Hashable {
     
-    public init(vertex1: Vertex, vertex2: Vertex, vertex3: Vertex) {
-        self.vertex1 = vertex1
-        self.vertex2 = vertex2
-        self.vertex3 = vertex3
+    public init(point1: Point, point2: Point, point3: Point) {
+        self.point1 = point1
+        self.point2 = point2
+        self.point3 = point3
     }
     
-    public let vertex1: Vertex
-    public let vertex2: Vertex
-    public let vertex3: Vertex
+    public let point1: Point
+    public let point2: Point
+    public let point3: Point
     
     public func v1() -> CGPoint {
-        return vertex1.pointValue()
+        return point1.pointValue()
     }
     
     public func v2() -> CGPoint {
-        return vertex2.pointValue()
+        return point2.pointValue()
     }
     
     public func v3() -> CGPoint {
-        return vertex3.pointValue()
+        return point3.pointValue()
     }
 }

@@ -13,17 +13,17 @@ import Darwin
     public override init() { }
     
     /* Generates a supertraingle containing all other triangles */
-    fileprivate func supertriangle(_ vertices: [Vertex]) -> [Vertex] {
+    fileprivate func supertriangle(_ points: [Point]) -> [Point] {
         var xmin = Double(Int32.max)
         var ymin = Double(Int32.max)
         var xmax = -Double(Int32.max)
         var ymax = -Double(Int32.max)
         
-        for i in 0..<vertices.count {
-            if vertices[i].x < xmin { xmin = vertices[i].x }
-            if vertices[i].x > xmax { xmax = vertices[i].x }
-            if vertices[i].y < ymin { ymin = vertices[i].y }
-            if vertices[i].y > ymax { ymax = vertices[i].y }
+        for i in 0..<points.count {
+            if points[i].x < xmin { xmin = points[i].x }
+            if points[i].x > xmax { xmax = points[i].x }
+            if points[i].y < ymin { ymin = points[i].y }
+            if points[i].y > ymax { ymax = points[i].y }
         }
         
         let dx = xmax - xmin
@@ -33,14 +33,14 @@ import Darwin
         let ymid = ymin + dy * 0.5
         
         return [
-            Vertex(x: xmid - 20 * dmax, y: ymid - dmax),
-            Vertex(x: xmid, y: ymid + 20 * dmax),
-            Vertex(x: xmid + 20 * dmax, y: ymid - dmax)
+            Point(x: xmid - 20 * dmax, y: ymid - dmax),
+            Point(x: xmid, y: ymid + 20 * dmax),
+            Point(x: xmid + 20 * dmax, y: ymid - dmax)
         ]
     }
     
-    /* Calculate a circumcircle for a set of 3 vertices */
-    fileprivate func circumcircle(_ i: Vertex, j: Vertex, k: Vertex) -> Circumcircle {
+    /* Calculate a circumcircle for a set of 3 points */
+    fileprivate func circumcircle(_ i: Point, j: Point, k: Point) -> Circumcircle {
         let x1 = i.x
         let y1 = i.y
         let x2 = j.x
@@ -85,13 +85,13 @@ import Darwin
         let dy = y2 - yc
         let rsqr = dx * dx + dy * dy
         
-        return Circumcircle(vertex1: i, vertex2: j, vertex3: k, x: xc, y: yc, rsqr: rsqr)
+        return Circumcircle(point1: i, point2: j, point3: k, x: xc, y: yc, rsqr: rsqr)
     }
     
-    fileprivate func dedup(_ edges: [Vertex]) -> [Vertex] {
+    fileprivate func dedup(_ edges: [Point]) -> [Point] {
         
         var e = edges
-        var a: Vertex?, b: Vertex?, m: Vertex?, n: Vertex?
+        var a: Point?, b: Point?, m: Point?, n: Point?
         
         var j = e.count
         while j > 0 {
@@ -118,35 +118,35 @@ import Darwin
         return e
     }
     
-    open func triangulate(_ vertices: [Vertex]) -> [Triangle] {
+    open func triangulate(_ points: [Point]) -> [Triangle] {
         
-        var _vertices = Array(Set.init(vertices)) 
-//        var _vertices = vertices.removeDuplicates()
+        var _points = Array(Set.init(points)) 
+//        var _points = points.removeDuplicates()
         
-        guard _vertices.count >= 3 else {
+        guard _points.count >= 3 else {
             return [Triangle]()
         }
 
-        let n = _vertices.count
+        let n = _points.count
         var open = [Circumcircle]()
         var completed = [Circumcircle]()
-        var edges = [Vertex]()
+        var edges = [Point]()
         
-        /* Make an array of indices into the vertex array, sorted by the
-        * vertices' x-position. */
-        var indices = [Int](0..<n).sorted {  _vertices[$0].x < _vertices[$1].x }
+        /* Make an array of indices into the point array, sorted by the
+        * points' x-position. */
+        let indices = [Int](0..<n).sorted {  _points[$0].x < _points[$1].x }
         
-        /* Next, find the vertices of the supertriangle (which contains all other
+        /* Next, find the points of the supertriangle (which contains all other
         * triangles) */
         
-        _vertices += supertriangle(_vertices)
+        _points += supertriangle(_points)
         
         /* Initialize the open list (containing the supertriangle and nothing
         * else) and the closed list (which is empty since we havn't processed
         * any triangles yet). */
-        open.append(circumcircle(_vertices[n], j: _vertices[n + 1], k: _vertices[n + 2]))
+        open.append(circumcircle(_points[n], j: _points[n + 1], k: _points[n + 2]))
         
-        /* Incrementally add each vertex to the mesh. */
+        /* Incrementally add each point to the mesh. */
         for i in 0..<n {
             let c = indices[i]
             
@@ -160,7 +160,7 @@ import Darwin
                 /* If this point is to the right of this triangle's circumcircle,
                 * then this triangle should never get checked again. Remove it
                 * from the open list, add it to the closed list, and skip. */
-                let dx = _vertices[c].x - open[j].x
+                let dx = _points[c].x - open[j].x
                 
                 if dx > 0 && dx * dx > open[j].rsqr {
                     completed.append(open.remove(at: j))
@@ -168,7 +168,7 @@ import Darwin
                 }
                 
                 /* If we're outside the circumcircle, skip this triangle. */
-                let dy = _vertices[c].y - open[j].y
+                let dy = _points[c].y - open[j].y
                 
                 if dx * dx + dy * dy - open[j].rsqr > Double.ulpOfOne {
                     continue
@@ -176,16 +176,10 @@ import Darwin
                 
                 /* Remove the triangle and add it's edges to the edge list. */
                 edges += [
-                    open[j].vertex1, open[j].vertex2,
-                    open[j].vertex2, open[j].vertex3,
-                    open[j].vertex3, open[j].vertex1
+                    open[j].point1, open[j].point2,
+                    open[j].point2, open[j].point3,
+                    open[j].point3, open[j].point1
                 ]
-                
-//                edges += [
-//                    Edge(vertex1: open[j].vertex1, vertex2: open[j].vertex2),
-//                    Edge(vertex1: open[j].vertex2, vertex2: open[j].vertex3),
-//                    Edge(vertex1: open[j].vertex3, vertex2: open[j].vertex1)
-//                ]
                 
                 open.remove(at: j)
             }
@@ -201,26 +195,26 @@ import Darwin
                 let b = edges[j]
                 j -= 1
                 let a = edges[j]
-                open.append(circumcircle(a, j: b, k: _vertices[c]))
+                open.append(circumcircle(a, j: b, k: _points[c]))
             }
         }
         
         /* Copy any remaining open triangles to the closed list, and then
-        * remove any triangles that share a vertex with the supertriangle,
+        * remove any triangles that share a point with the supertriangle,
         * building a list of triplets that represent triangles. */
         completed += open
         
-        let ignored: Set<Vertex> = [_vertices[n], _vertices[n + 1], _vertices[n + 2]]
+        let ignored: Set<Point> = [_points[n], _points[n + 1], _points[n + 2]]
         
-        let results = completed.flatMap { (circumCircle) -> Triangle? in
+        let results = completed.compactMap { (circumCircle) -> Triangle? in
             
-            let current: Set<Vertex> = [circumCircle.vertex1, circumCircle.vertex2, circumCircle.vertex3]
+            let current: Set<Point> = [circumCircle.point1, circumCircle.point2, circumCircle.point3]
             let intersection = ignored.intersection(current)
             if intersection.count > 0 {
                 return nil
             }
             
-            return Triangle(vertex1: circumCircle.vertex1, vertex2: circumCircle.vertex2, vertex3: circumCircle.vertex3)
+            return Triangle(point1: circumCircle.point1, point2: circumCircle.point2, point3: circumCircle.point3)
         }
         
         /* Yay, we're done! */

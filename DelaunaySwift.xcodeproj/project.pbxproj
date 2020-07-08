@@ -12,7 +12,7 @@
 		C41B5BD11C3FF148006B601E /* DelaunayTriangulationSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BD01C3FF148006B601E /* DelaunayTriangulationSwiftTests.swift */; };
 		C41B5BDC1C3FF667006B601E /* DelaunaySwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BDB1C3FF667006B601E /* DelaunaySwift.swift */; };
 		C41B5BE01C3FF703006B601E /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BDF1C3FF703006B601E /* Triangle.swift */; };
-		C41B5BE21C3FF72E006B601E /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BE11C3FF72E006B601E /* Vertex.swift */; };
+		C41B5BE21C3FF72E006B601E /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BE11C3FF72E006B601E /* Point.swift */; };
 		C41B5BE41C3FF751006B601E /* CircumCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BE31C3FF751006B601E /* CircumCircle.swift */; };
 		C41B5BEC1C3FFDF8006B601E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BEB1C3FFDF8006B601E /* AppDelegate.swift */; };
 		C41B5BEE1C3FFDF8006B601E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BED1C3FFDF8006B601E /* ViewController.swift */; };
@@ -24,15 +24,12 @@
 		C45BF3591C4535C100DE404D /* DelaunaySwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C41B5BC11C3FF148006B601E /* DelaunaySwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C4C89ABD1C410B0D0022F237 /* DelaunaySwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C41B5BC11C3FF148006B601E /* DelaunaySwift.framework */; };
 		C4E432A91CB684DD006E3BC0 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E432A81CB684DD006E3BC0 /* Edge.swift */; };
-		C4E432AB1CB68629006E3BC0 /* EquatableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E432AA1CB68629006E3BC0 /* EquatableTests.swift */; };
 		D2A9911E1F4863B600851EE9 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BDF1C3FF703006B601E /* Triangle.swift */; };
 		D2A9911F1F4863B600851EE9 /* DelaunaySwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BDB1C3FF667006B601E /* DelaunaySwift.swift */; };
 		D2A991201F4863B600851EE9 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E432A81CB684DD006E3BC0 /* Edge.swift */; };
-		D2A991211F4863B600851EE9 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BE11C3FF72E006B601E /* Vertex.swift */; };
+		D2A991211F4863B600851EE9 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BE11C3FF72E006B601E /* Point.swift */; };
 		D2A991221F4863B600851EE9 /* CircumCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5BE31C3FF751006B601E /* CircumCircle.swift */; };
 		D2A991251F4863B600851EE9 /* DelaunaySwift.h in Headers */ = {isa = PBXBuildFile; fileRef = C41B5BC41C3FF148006B601E /* DelaunaySwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D2F918BC1F4AD19E0036548C /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F918BB1F4AD19E0036548C /* Hash.swift */; };
-		D2F918BD1F4AD19E0036548C /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F918BB1F4AD19E0036548C /* Hash.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +72,7 @@
 		C41B5BD21C3FF148006B601E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C41B5BDB1C3FF667006B601E /* DelaunaySwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelaunaySwift.swift; sourceTree = "<group>"; };
 		C41B5BDF1C3FF703006B601E /* Triangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
-		C41B5BE11C3FF72E006B601E /* Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
+		C41B5BE11C3FF72E006B601E /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		C41B5BE31C3FF751006B601E /* CircumCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircumCircle.swift; sourceTree = "<group>"; };
 		C41B5BE91C3FFDF8006B601E /* Triangulation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Triangulation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C41B5BEB1C3FFDF8006B601E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,11 +84,8 @@
 		C41B5BFD1C3FFF1E006B601E /* TriangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
 		C41B5BFF1C3FFF49006B601E /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C4E432A81CB684DD006E3BC0 /* Edge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
-		C4E432AA1CB68629006E3BC0 /* EquatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquatableTests.swift; sourceTree = "<group>"; };
-		D21CB51C20862CDE003490ED /* Triangulation-Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Triangulation-Example-Bridging-Header.h"; sourceTree = "<group>"; };
 		D2A9912A1F4863B600851EE9 /* DelaunaySwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DelaunaySwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A991371F4865B000851EE9 /* DelaunaySwift_MacOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DelaunaySwift_MacOS-Info.plist"; sourceTree = "<group>"; };
-		D2F918BB1F4AD19E0036548C /* Hash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,9 +148,8 @@
 			children = (
 				C41B5BDB1C3FF667006B601E /* DelaunaySwift.swift */,
 				C41B5BDF1C3FF703006B601E /* Triangle.swift */,
-				C41B5BE11C3FF72E006B601E /* Vertex.swift */,
+				C41B5BE11C3FF72E006B601E /* Point.swift */,
 				C4E432A81CB684DD006E3BC0 /* Edge.swift */,
-				D2F918BB1F4AD19E0036548C /* Hash.swift */,
 				C41B5BE31C3FF751006B601E /* CircumCircle.swift */,
 				C41B5BFB1C3FFE29006B601E /* Supporting Files */,
 			);
@@ -169,7 +162,6 @@
 			children = (
 				C41B5BD01C3FF148006B601E /* DelaunayTriangulationSwiftTests.swift */,
 				C41B5BD21C3FF148006B601E /* Info.plist */,
-				C4E432AA1CB68629006E3BC0 /* EquatableTests.swift */,
 			);
 			name = DelaunaySwiftTests;
 			path = DelaunayTriangulationSwiftTests;
@@ -201,7 +193,6 @@
 		C41B5BFC1C3FFE3C006B601E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D21CB51C20862CDE003490ED /* Triangulation-Example-Bridging-Header.h */,
 				C41B5BEF1C3FFDF8006B601E /* Main.storyboard */,
 				C41B5BF21C3FFDF8006B601E /* Assets.xcassets */,
 				C41B5BF41C3FFDF8006B601E /* LaunchScreen.storyboard */,
@@ -312,7 +303,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = zero;
 				TargetAttributes = {
 					C41B5BC01C3FF148006B601E = {
@@ -325,13 +316,14 @@
 					};
 					C41B5BE81C3FFDF8006B601E = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 2466624KEK;
 						LastSwiftMigration = 0800;
 					};
 				};
 			};
 			buildConfigurationList = C41B5BBB1C3FF148006B601E /* Build configuration list for PBXProject "DelaunaySwift" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -390,10 +382,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C41B5BE01C3FF703006B601E /* Triangle.swift in Sources */,
-				D2F918BC1F4AD19E0036548C /* Hash.swift in Sources */,
 				C41B5BDC1C3FF667006B601E /* DelaunaySwift.swift in Sources */,
 				C4E432A91CB684DD006E3BC0 /* Edge.swift in Sources */,
-				C41B5BE21C3FF72E006B601E /* Vertex.swift in Sources */,
+				C41B5BE21C3FF72E006B601E /* Point.swift in Sources */,
 				C41B5BE41C3FF751006B601E /* CircumCircle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,7 +393,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4E432AB1CB68629006E3BC0 /* EquatableTests.swift in Sources */,
 				C41B5BD11C3FF148006B601E /* DelaunayTriangulationSwiftTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,10 +413,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2A9911E1F4863B600851EE9 /* Triangle.swift in Sources */,
-				D2F918BD1F4AD19E0036548C /* Hash.swift in Sources */,
 				D2A9911F1F4863B600851EE9 /* DelaunaySwift.swift in Sources */,
 				D2A991201F4863B600851EE9 /* Edge.swift in Sources */,
-				D2A991211F4863B600851EE9 /* Vertex.swift in Sources */,
+				D2A991211F4863B600851EE9 /* Point.swift in Sources */,
 				D2A991221F4863B600851EE9 /* CircumCircle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,18 +459,27 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -510,6 +508,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -520,18 +519,27 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -553,6 +561,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -577,7 +586,6 @@
 				PRODUCT_NAME = DelaunaySwift;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -597,7 +605,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.zero.DelaunaySwift;
 				PRODUCT_NAME = DelaunaySwift;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -609,7 +616,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.zero.DelaunayTriangulationSwiftTests;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)Tests";
 				PRODUCT_NAME = DelaunaySwift;
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -621,7 +627,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.zero.DelaunayTriangulationSwiftTests;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)Tests";
 				PRODUCT_NAME = DelaunaySwift;
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -630,13 +635,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2466624KEK;
 				INFOPLIST_FILE = Triangulation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zero.Triangulation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Triangulation/Triangulation-Example-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -645,13 +648,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2466624KEK;
 				INFOPLIST_FILE = Triangulation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zero.Triangulation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Triangulation/Triangulation-Example-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -674,7 +675,6 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
@@ -697,7 +697,6 @@
 				PRODUCT_NAME = DelaunaySwift;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 				VALID_ARCHS = x86_64;
 			};
 			name = Release;
