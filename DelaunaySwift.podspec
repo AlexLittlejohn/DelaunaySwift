@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
   spec.requires_arc       = true
   spec.platform           = :ios, "10.0"
   spec.license            = "MIT"
-  spec.source_files       = "DelaunayTriangulationSwift/**/*.{swift}"
+  spec.source_files       = "DelaunayTriangulation/**/*.{swift}"
   spec.homepage           = "https://github.com/AlexLittlejohn/DelaunaySwift"
   spec.author             = { "Alex Littlejohn" => "alexlittlejohn@me.com" }
 end
