@@ -29,7 +29,7 @@ extension Triangle {
 }
 
 extension Point {
-    convenience public init(point: CGPoint) {
+    public init(point: CGPoint) {
         self.init(x: Double(point.x), y: Double(point.y))
     }
     

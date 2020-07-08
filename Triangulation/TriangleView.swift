@@ -65,7 +65,7 @@ class TriangleView: UIView {
         }
 
         let points = generateVertices(bounds.size, cellSize: 80)
-        let delaunayTriangles = Delaunay().triangulate(points)
+        let delaunayTriangles = triangulate(points)
         
         triangles = []
         for triangle in delaunayTriangles {
