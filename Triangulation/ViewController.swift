@@ -9,10 +9,4 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let triangleView = TriangleView(frame: view.bounds)
-        view.addSubview(triangleView)
-    }
 }

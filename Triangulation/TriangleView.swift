@@ -10,8 +10,8 @@ import UIKit
 import GameplayKit
 import DelaunaySwift
 
-/// Generate set of vertices for our triangulation to use
-func generateVertices(_ size: CGSize, cellSize: CGFloat, variance: CGFloat = 0.75, seed: UInt64 = numericCast(arc4random())) -> [Vertex] {
+/// Generate set of points for our triangulation to use
+func generateVertices(_ size: CGSize, cellSize: CGFloat, variance: CGFloat = 0.75, seed: UInt64 = UInt64.random(in: 0..<UInt64.max)) -> [Point] {
     
     // How many cells we're going to have on each axis (pad by 2 cells on each edge)
     let cellsX = (size.width + 4 * cellSize) / cellSize
@@ -23,7 +23,7 @@ func generateVertices(_ size: CGSize, cellSize: CGFloat, variance: CGFloat = 0.7
     
     let _variance = cellSize * variance / 4
     
-    var points = [Vertex]()
+    var points = [Point]()
     let minX = -bleedX
     let maxX = size.width + bleedX
     let minY = -bleedY
@@ -34,10 +34,10 @@ func generateVertices(_ size: CGSize, cellSize: CGFloat, variance: CGFloat = 0.7
     for i in stride(from: minX, to: maxX, by: cellSize) {
         for j in stride(from: minY, to: maxY, by: cellSize) {
             
-            let x = i + cellSize/2 + CGFloat(generator.nextUniform()) + CGFloat.random(-_variance, _variance)
-            let y = j + cellSize/2 + CGFloat(generator.nextUniform()) + CGFloat.random(-_variance, _variance)
+            let x = i + cellSize/2 + CGFloat(generator.nextUniform()) + CGFloat.random(in: -_variance..._variance)
+            let y = j + cellSize/2 + CGFloat(generator.nextUniform()) + CGFloat.random(in: -_variance..._variance)
             
-            points.append(Vertex(x: Double(x), y: Double(y)))
+            points.append(Point(x: Double(x), y: Double(y)))
         }
     }
     
@@ -45,50 +45,55 @@ func generateVertices(_ size: CGSize, cellSize: CGFloat, variance: CGFloat = 0.7
 }
 
 class TriangleView: UIView {
+    var triangles: [(Triangle, CAShapeLayer)] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        commonInit()
     }
     
-    func commonInit() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(TriangleView.tapped))
-        addGestureRecognizer(tapGesture)
+    override func didMoveToSuperview() {
+        initTriangles()
     }
     
-    func tapped() {
-        if let sublayers = layer.sublayers {
-            for sublayer in sublayers {
-                sublayer.removeFromSuperlayer()
-            }
+    func initTriangles() {
+        for (_, triangleLayer) in triangles {
+            triangleLayer.removeFromSuperlayer()
         }
-        setNeedsLayout()
-        layoutIfNeeded()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
+
+        let points = generateVertices(bounds.size, cellSize: 80)
+        let delaunayTriangles = triangulate(points)
         
-        let vertices = generateVertices(bounds.size, cellSize: 80)
-
-        let start = Date().timeIntervalSince1970
-
-        let triangles = Delaunay().triangulate(vertices)
-
-        let end = Date().timeIntervalSince1970
-        print("time: \(end - start)")
-
-        for triangle in triangles {
+        triangles = []
+        for triangle in delaunayTriangles {
             let triangleLayer = CAShapeLayer()
             triangleLayer.path = triangle.toPath()
             triangleLayer.fillColor = UIColor().randomColor().cgColor
             triangleLayer.backgroundColor = UIColor.clear.cgColor
             layer.addSublayer(triangleLayer)
+            
+            triangles.append((triangle, triangleLayer))
+        }
+    }
+    
+    @IBAction func singleTap(recognizer: UITapGestureRecognizer) {
+        if recognizer.state == .ended {
+            let tapLocation = recognizer.location(in: self)
+            let vertex = Point(point: tapLocation)
+            for (triangle, triangleLayer) in triangles {
+                if vertex.inside(triangle) {
+                    triangleLayer.fillColor = UIColor.black.cgColor
+                }
+            }
+        }
+    }
+    
+    @IBAction func doubleTap(recognizer: UITapGestureRecognizer) {
+        if recognizer.state == .ended {
+            initTriangles()
         }
     }
 }

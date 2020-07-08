@@ -6,11 +6,11 @@
 //  Copyright © 2016 zero. All rights reserved.
 //
 
-/// Represents a bounding circle for a set of 3 vertices
-internal struct Circumcircle {
-    let vertex1: Vertex
-    let vertex2: Vertex
-    let vertex3: Vertex
+/// Represents a circle which intersects a set of 3 points
+internal struct Circumcircle: Hashable {
+    let point1: Point
+    let point2: Point
+    let point3: Point
     let x: Double
     let y: Double
     let rsqr: Double

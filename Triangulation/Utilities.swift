@@ -13,14 +13,14 @@ extension Triangle {
     func toPath() -> CGPath {
         
         let path = CGMutablePath()
-        let point1 = vertex1.pointValue()
-        let point2 = vertex2.pointValue()
-        let point3 = vertex3.pointValue()
+        let p1 = point1.pointValue()
+        let p2 = point2.pointValue()
+        let p3 = point3.pointValue()
         
-        path.move(to: point1)
-        path.addLine(to: point2)
-        path.addLine(to: point3)
-        path.addLine(to: point1)
+        path.move(to: p1)
+        path.addLine(to: p2)
+        path.addLine(to: p3)
+        path.addLine(to: p1)
 
         path.closeSubpath()
         
@@ -28,31 +28,30 @@ extension Triangle {
     }
 }
 
-extension Vertex {
-    func pointValue() -> CGPoint {
-        return CGPoint(x: x, y: y)
-    }
-}
-
-extension Double {
-    static func random() -> Double {
-        return Double(arc4random()) / 0xFFFFffff
+extension Point {
+    public init(point: CGPoint) {
+        self.init(x: Double(point.x), y: Double(point.y))
     }
     
-    static func random(_ min: Double, _ max: Double) -> Double {
-        return Double.random() * (max - min) + min
+    public func pointValue() -> CGPoint {
+        return CGPoint(x: x, y: y)
     }
-}
-
-extension CGFloat {
-    static func random(_ min: CGFloat, _ max: CGFloat) -> CGFloat {
-        return CGFloat(Double.random(Double(min), Double(max)))
+    
+    public func inside(_ triangle: Triangle) -> Bool {
+        func sign(p: Point, v0: Point, v1: Point) -> Double {
+            return (p.x - v1.x) * (v0.y - v1.y) - (v0.x - v1.x) * (p.y - v1.y)
+        }
+        
+        let s1 = sign(p: self, v0: triangle.point1, v1: triangle.point2)
+        let s2 = sign(p: self, v0: triangle.point2, v1: triangle.point3)
+        let s3 = sign(p: self, v0: triangle.point3, v1: triangle.point1)
+        return (s1 * s2 >= 0) && (s2 * s3 >= 0)
     }
 }
 
 extension UIColor {
     func randomColor() -> UIColor {
-        let hue = CGFloat( Double.random() )  // 0.0 to 1.0
+        let hue = CGFloat.random(in: 0...1) // 0.0 to 1.0
         let saturation: CGFloat = 0.5  // 0.5 to 1.0, away from white
         let brightness: CGFloat = 1.0  // 0.5 to 1.0, away from black
         let color = UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
